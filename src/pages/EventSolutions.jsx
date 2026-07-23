@@ -36,8 +36,9 @@ export default function EventSolutions() {
       <div className="fixed top-0 left-0 w-full h-full -z-10 bg-[radial-gradient(circle_at_20%_30%,rgba(255,0,214,0.06)_0%,transparent_40%),radial-gradient(circle_at_80%_70%,rgba(112,0,255,0.05)_0%,transparent_40%)]"></div>
 
       {/* Hero Section */}
-      <section className="relative px-5 md:px-16 max-w-[1440px] mx-auto mb-32 min-h-[600px] md:min-h-[716px] flex flex-col justify-center overflow-hidden pt-32 pb-16 rounded-3xl border border-white/10 shadow-2xl">
-        <div className="absolute inset-0 z-0">
+      <section className="relative w-full min-h-screen flex flex-col justify-center overflow-hidden mb-32">
+        {/* Fullscreen Video Background */}
+        <div className="absolute inset-0 w-full h-full z-0 overflow-hidden">
           <video
             autoPlay
             loop
@@ -49,7 +50,7 @@ export default function EventSolutions() {
                 el.play().catch(() => {});
               }
             }}
-            className="w-full h-full object-cover opacity-75 scale-100"
+            className="w-full h-full object-cover opacity-85 scale-100"
           >
             <source src="/hero-bg.mp4" type="video/mp4" />
             <source
@@ -57,32 +58,36 @@ export default function EventSolutions() {
               type="video/mp4"
             />
           </video>
-          {/* Gradient overlay to make text readable while keeping video clearly visible */}
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 to-transparent"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50"></div>
+          {/* Subtle dark overlays for contrast & seamless transition */}
+          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/60"></div>
         </div>
-        <div className="relative z-10 max-w-3xl">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_12px_#FF00D6]"></span>
-            <span className="font-label-caps text-label-caps tracking-widest text-secondary uppercase">
-              Elite Experiences
-            </span>
-          </div>
-          <h1 className="font-display-lg text-5xl md:text-[72px] mb-8 leading-tight tracking-tighter">
-            Architecting the <span className="text-primary italic neon-glow">Future</span> of Nightlife.
-          </h1>
-          <p className="text-lg md:text-body-lg text-on-surface-variant max-w-xl mb-12">
-            We redefine the standards of luxury entertainment. From concept to
-            closing, AfterDark provides bespoke solutions for the world's most
-            exclusive events.
-          </p>
-          <div className="flex flex-col md:flex-row gap-4">
-            <button className="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,214,0.3)] hover:scale-105 active:scale-95">
-              Start Planning
-            </button>
-            <button className="border border-outline-variant bg-white/5 backdrop-blur-md font-label-caps text-label-caps px-8 py-4 rounded-full hover:bg-white/10 transition-all">
-              View Portfolios
-            </button>
+
+        {/* Hero Content Container */}
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-5 md:px-16 pt-28 pb-16">
+          <div className="max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_12px_#FF00D6]"></span>
+              <span className="font-label-caps text-label-caps tracking-widest text-secondary uppercase">
+                Elite Experiences
+              </span>
+            </div>
+            <h1 className="font-display-lg text-5xl md:text-[72px] mb-8 leading-tight tracking-tighter text-white drop-shadow-lg">
+              Architecting the <span className="text-primary italic neon-glow">Future</span> of Nightlife.
+            </h1>
+            <p className="text-lg md:text-body-lg text-gray-200 max-w-xl mb-12 drop-shadow-md">
+              We redefine the standards of luxury entertainment. From concept to
+              closing, AfterDark provides bespoke solutions for the world's most
+              exclusive events.
+            </p>
+            <div className="flex flex-col md:flex-row gap-4">
+              <button className="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded-full transition-all hover:shadow-[0_0_20px_rgba(255,0,214,0.5)] hover:scale-105 active:scale-95 shadow-lg">
+                Start Planning
+              </button>
+              <button className="border border-white/30 bg-black/40 backdrop-blur-md font-label-caps text-label-caps px-8 py-4 rounded-full hover:bg-white/20 transition-all text-white">
+                View Portfolios
+              </button>
+            </div>
           </div>
         </div>
       </section>

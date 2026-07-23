@@ -1,14 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <nav className="fixed top-0 w-full bg-black/60 backdrop-blur-xl border-b border-white/5 z-50 transition-all duration-300">
-      <div className="flex justify-between items-center px-5 md:px-16 py-4 max-w-[1440px] mx-auto">
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? "bg-background/90 backdrop-blur-xl border-b border-white/10 shadow-2xl"
+          : "bg-black/80 lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none border-b border-white/5 lg:border-b-0"
+      }`}
+    >
+      <div
+        className={`flex justify-between items-center px-5 md:px-16 transition-all duration-500 max-w-[1440px] mx-auto ${
+          isScrolled ? "py-2.5" : "py-5 md:py-6"
+        }`}
+      >
         <Link
-          className="text-display-lg font-headline-md tracking-tighter text-primary neon-glow"
+          className={`font-headline-md tracking-tighter text-primary neon-glow transition-all duration-500 ${
+            isScrolled ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
+          }`}
           to="/"
         >
           AfterDark
@@ -18,8 +48,8 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-8">
           <NavLink
             className={({ isActive }) =>
-              `text-label-caps ${
-                isActive ? "text-primary border-b-2 border-primary pb-1" : "text-on-surface/70 hover:text-primary transition-colors duration-300"
+              `text-label-caps transition-all duration-300 ${
+                isActive ? "text-primary border-b-2 border-primary pb-1" : "text-on-surface/70 hover:text-primary"
               }`
             }
             to="/"
@@ -35,8 +65,8 @@ export default function Navbar() {
           </a>
           <NavLink
             className={({ isActive }) =>
-              `text-label-caps ${
-                isActive ? "text-primary border-b-2 border-primary pb-1" : "text-on-surface/70 hover:text-primary transition-colors duration-300"
+              `text-label-caps transition-all duration-300 ${
+                isActive ? "text-primary border-b-2 border-primary pb-1" : "text-on-surface/70 hover:text-primary"
               }`
             }
             to="/solutions"
@@ -52,7 +82,11 @@ export default function Navbar() {
         </div>
 
         <div className="hidden lg:block">
-          <button className="bg-primary text-on-primary px-7 py-2.5 text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,0,214,0.5)]">
+          <button
+            className={`bg-primary text-on-primary text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,0,214,0.5)] ${
+              isScrolled ? "px-6 py-2 text-xs" : "px-7 py-2.5 text-sm"
+            }`}
+          >
             Tickets
           </button>
         </div>
