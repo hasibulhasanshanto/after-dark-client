@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        try {
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        "colors": {
+                            "primary": "#FF00D6", // Updated to electric pink
+                            "on-primary": "#FFFFFF",
+                            "primary-container": "#FF00D6",
+                            "on-primary-container": "#FFFFFF",
+                            "primary-fixed": "#FFADE2",
+                            "primary-fixed-dim": "#FF2FD6",
+                            "secondary": "#d1bcff",
+                            "on-secondary": "#3c0090",
+                            "secondary-container": "#7000ff",
+                            "on-secondary-container": "#ddcdff",
+                            "tertiary": "#fff2f7",
+                            "tertiary-container": "#ffcaea",
+                            "surface": "#0e0e0f", // Darkened for better contrast
+                            "background": "#0e0e0f", // Darkened for deeper black look
+                            "on-background": "#e5e2e1",
+                            "on-surface": "#e5e2e1",
+                            "on-surface-variant": "#debdd0",
+                            "outline": "#a68899",
+                            "outline-variant": "#58404f",
+                            "surface-container-lowest": "#0e0e0f",
+                            "surface-container-low": "#131314",
+                            "surface-container": "#1c1b1c",
+                            "surface-container-high": "#201f20",
+                            "surface-container-highest": "#2a2a2b",
+                            "error": "#ffb4ab",
+                            "error-container": "#93000a"
+                        },
+                        "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                        },
+                        "spacing": {
+                            "gutter": "24px",
+                            "unit": "8px",
+                            "margin-mobile": "20px",
+                            "margin-desktop": "64px",
+                            "container-max": "1440px"
+                        },
+                        "fontFamily": {
+                            "display-lg": ["Space Grotesk", "sans-serif"],
+                            "headline-md": ["Space Grotesk", "sans-serif"],
+                            "headline-xl": ["Space Grotesk", "sans-serif"],
+                            "body-lg": ["Inter", "sans-serif"],
+                            "body-md": ["Inter", "sans-serif"],
+                            "label-caps": ["Inter", "sans-serif"]
+                        },
+                        "fontSize": {
+                            "display-lg": ["72px", {"lineHeight": "1.05", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                            "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                            "headline-xl": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                            "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                            "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                            "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.15em", "fontWeight": "600"}]
+                        }
+                    },
+                },
+            }
+        } catch (_e) {}
+    </script>
+<style>
+        .neon-glow {
+            text-shadow: 0 0 15px rgba(255, 0, 214, 0.6), 0 0 30px rgba(255, 0, 214, 0.3);
+        }
+        .neon-glow-strong {
+            text-shadow: 0 0 20px rgba(255, 0, 214, 0.8), 0 0 40px rgba(255, 0, 214, 0.4);
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .neon-border-hover {
+            transition: all 0.4s ease;
+        }
+        .neon-border-hover:hover {
+            border-color: #FF00D6;
+            box-shadow: 0 0 20px rgba(255, 0, 214, 0.4);
+            transform: translateY(-4px);
+        }
+        .card-glow:hover {
+            box-shadow: 0 0 35px rgba(255, 0, 214, 0.2);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-background bg-background antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full bg-black/60 backdrop-blur-xl border-b border-white/5 z-50">
+<div class="flex justify-between items-center px-margin-desktop py-unit-2 max-w-container-max mx-auto">
+<a class="font-display-lg text-headline-md tracking-tighter text-primary neon-glow" href="#">AfterDark</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-caps text-[11px] text-primary font-bold border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="font-label-caps text-[11px] text-on-surface/70 hover:text-primary transition-colors duration-300" href="#about">About Us</a>
+<a class="font-label-caps text-[11px] text-on-surface/70 hover:text-primary transition-colors duration-300" href="#solutions">Event Solutions</a>
+<a class="font-label-caps text-[11px] text-on-surface/70 hover:text-primary transition-colors duration-300" href="#gallery">Gallery</a>
+</div>
+<button class="bg-primary text-on-primary px-7 py-2.5 font-label-caps text-[11px] rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,0,214,0.5)] uppercase font-bold">
+                Tickets
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<video autoplay="" class="w-full h-full object-cover opacity-30 scale-105" loop="" muted="" playsinline="">
+<source src="https://assets.mixkit.co/videos/preview/mixkit-dancing-at-a-night-club-with-neon-lights-4011-large.mp4" type="video/mp4"/>
+</video>
+<div class="absolute inset-0 bg-gradient-to-b from-background via-background/40 to-background"></div>
+</div>
+<div class="relative z-10 text-center px-margin-mobile">
+<h1 class="font-display-lg text-6xl md:text-display-lg text-primary tracking-tighter mb-4 neon-glow-strong animate-pulse">
+                AfterDark
+            </h1>
+<p class="font-headline-md text-xl md:text-headline-md text-on-surface max-w-2xl mx-auto mb-10 opacity-90 tracking-tight">
+                Premium Music Experiences Across Asia
+            </p>
+<div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+<button class="w-full md:w-auto bg-primary text-on-primary font-label-caps text-[12px] px-12 py-5 rounded-full hover:shadow-[0_0_40px_rgba(255,0,214,0.7)] transition-all font-bold tracking-widest uppercase">
+                    BUY TICKETS
+                </button>
+<button class="w-full md:w-auto border border-primary/40 text-primary font-label-caps text-[12px] px-12 py-5 rounded-full glass hover:bg-primary/10 transition-all font-bold tracking-widest uppercase">
+                    EXPLORE EVENTS
+                </button>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce">
+<span class="font-label-caps text-[10px] tracking-[0.4em] text-primary">SCROLL</span>
+<span class="material-symbols-outlined text-primary">expand_more</span>
+</div>
+</header>
+<!-- About Section -->
+<section class="py-32 px-margin-desktop max-w-container-max mx-auto reveal" id="about">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div>
+<span class="text-primary font-label-caps text-[11px] tracking-[0.3em] mb-4 block font-bold">THE PHILOSOPHY</span>
+<h2 class="font-display-lg text-headline-xl md:text-display-lg text-on-surface mb-8 tracking-tighter">Luxury, Exclusivity, Immersive Production.</h2>
+<p class="font-body-lg text-lg text-on-surface-variant mb-6 leading-relaxed">
+                    AfterDark isn't just an event; it's a curated odyssey into the heart of nightlife. We redefine the boundaries of sonic and visual storytelling, creating ethereal landscapes where music and technology converge.
+                </p>
+<p class="font-body-md text-on-surface-variant/80">
+                    From underground boutique sessions in Tokyo to massive festivals in Singapore, every detail is meticulously engineered for the most discerning audience.
+                </p>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-gradient-to-r from-primary/30 to-secondary/30 opacity-20 blur-3xl group-hover:opacity-40 transition-opacity"></div>
+<div class="glass rounded-2xl overflow-hidden aspect-[4/5] border border-white/10">
+<img class="w-full h-full object-cover grayscale-[40%] group-hover:grayscale-0 transition-all duration-700" data-alt="A cinematic, high-contrast photograph of a luxury event space in Asia, featuring deep shadows and vibrant neon cyan laser lights cutting through a thin atmospheric haze. The setting is modern and minimalist, highlighting the premium aesthetic of the AfterDark brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB_z1Qwv0bQFIY7sROLNgy6Q6vzTC_aCTitHq7ci0OzhYBiJw0RDsB1ecegZEvIzYmhqp-LpP3mhNTtSDduCF4tLvO4_I4DM11TJjDgyDbljJoAX7NjCVI4hJ5VasVzPAQBDLme15aqlr0KBzGaxZwgrNV-r_J4FJxRR4zKAQHBu09BCxJ6JASkIzCFHLVjUMhzLyCyBlq7kvfLo32T0zxJsGxyXM4S-VIW8Qa_42RvUtKHc0_OSe0"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Global Residencies -->
+<section class="pb-32 pt-12 px-margin-desktop max-w-container-max mx-auto reveal">
+<h2 class="font-display-lg text-headline-xl text-on-surface mb-16 tracking-tighter">Global Residencies</h2>
+<div class="space-y-12">
+<!-- Event 1 -->
+<div class="glass rounded-2xl overflow-hidden flex flex-col md:flex-row group hover:border-primary/50 transition-all card-glow border border-white/5">
+<div class="md:w-2/5 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="A high-energy photograph of a crowded Tokyo night club with futuristic neon signs in Japanese and cyan lighting. The shot focus is on a sleek DJ booth with high-tech equipment against a dark, moody background, following the AfterDark brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcqgBl7CA40xwBpctb-nukSiW2nGrbxKe9dnwNZKtlQFctoYb9_55eHbysuJgz5he50lX9YM7qIBkvEJvJG9lrK26jwODQJK6oWdBfPFMJg7BpG6f-D6o_ZGsCGQRabXQ_AfbzlHaN-hr4XTBid65xNzpXl79rVKNRip8CRtjUBKrBmcqf6xLQ20B-7VdQymgSjeGHjC-RQyBSPlQk4TmeE1t50R5b9wv2ggNn8rJOOLMXzQtfG_Bd"/>
+<div class="absolute top-4 left-4 bg-primary/20 backdrop-blur-md px-4 py-1 rounded-full border border-primary/40">
+<span class="text-white text-[10px] font-bold tracking-widest font-label-caps uppercase">Limited</span>
+</div>
+</div>
+<div class="md:w-3/5 p-12 flex flex-col justify-center">
+<div class="inline-flex items-center gap-2 bg-primary/10 backdrop-blur-md border border-primary/30 px-3 py-1 rounded-full mb-6 self-start">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+<span class="text-primary text-[10px] font-bold tracking-[0.2em] font-label-caps">LIVE NOW</span>
+</div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-primary font-label-caps text-[11px] block mb-2 tracking-[0.3em] font-bold uppercase">September 12 • 2024</span>
+<h3 class="font-display-lg text-headline-xl text-on-surface tracking-tighter">Neon Zenith: Tokyo</h3>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant text-[10px] font-label-caps tracking-widest">OMOTESANDO HILLS</p>
+<p class="text-primary font-bold text-sm tracking-tight">VIP ONLY</p>
+</div>
+</div>
+<p class="text-on-surface-variant body-md mb-8 max-w-xl">Join us for an exclusive 8-hour takeover featuring a curated lineup of techno pioneers in the heart of Tokyo's most iconic district.</p>
+<button class="self-start px-8 py-3.5 bg-primary text-on-primary font-label-caps text-[11px] font-bold rounded-lg hover:shadow-[0_0_25px_rgba(255,0,214,0.6)] transition-all uppercase tracking-widest">
+                        Secure Tickets
+                    </button>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="glass rounded-2xl overflow-hidden flex flex-col md:flex-row-reverse group hover:border-secondary/50 transition-all card-glow border border-white/5">
+<div class="md:w-2/5 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="A panoramic view of the Singapore Marina Bay Sands skyline at night, captured in a cinematic style with deep purple and blue color grading. The lighting is sophisticated and atmospheric, mirroring the premium nightlife vibe of AfterDark's exclusive events." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQSyFrtEk5eZaRrC-7bUt-6qvHi1xCr-Q4YKEzVwyvVlYevABjdSo6LnFORoNNK2LuDsTw6mQnqjNInYpeyxrH1QK4IYh5VaK-PlmkPRk3Akgqf1WmQX5Af6eAPq3tOhIWKcF8i5QBRrye7E55FqmA8fCT9zmHZER2GiTAOLbgmO2jMOhMBXuAgaaTEuZ7h8Y0p63EoHIkWkcGOYF6Eb1JMsnSwo_zstmLu7FjViC-oO6siB8WgOWC"/>
+<div class="absolute top-4 right-4 bg-error-container/20 backdrop-blur-md px-4 py-1 rounded-full border border-error-container/30">
+<span class="text-error text-[10px] font-bold tracking-widest font-label-caps uppercase">Sold Out</span>
+</div>
+</div>
+<div class="md:w-3/5 p-12 flex flex-col justify-center">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-secondary font-label-caps text-[11px] block mb-2 tracking-[0.3em] font-bold uppercase">October 05 • 2024</span>
+<h3 class="font-display-lg text-headline-xl text-on-surface tracking-tighter">Harbour Pulse: Singapore</h3>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant text-[10px] font-label-caps tracking-widest">MARINA BAY SANDS</p>
+<p class="text-secondary font-bold text-sm tracking-tight">WAITLIST OPEN</p>
+</div>
+</div>
+<p class="text-on-surface-variant body-md mb-8 max-w-xl">A panoramic auditory experience overlooking the Singapore skyline. 360-degree immersive projection mapping and spatial audio.</p>
+<button class="self-start px-8 py-3.5 border border-secondary text-secondary font-label-caps text-[11px] font-bold rounded-lg hover:bg-secondary/10 transition-all uppercase tracking-widest">
+                        Join Waitlist
+                    </button>
+</div>
+</div>
+<!-- Event 3-->
+<div class="glass rounded-2xl overflow-hidden flex flex-col md:flex-row group hover:border-primary/50 transition-all card-glow border border-white/5">
+<div class="md:w-2/5 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" data-alt="A lush, tropical luxury villa setting in Bangkok at night, featuring a stunning infinity pool reflecting cyan and violet ambient lights. The atmosphere is exotic, exclusive, and mysterious, aligned with the AfterDark brand's cinematic visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPMHF_O7HdZz14zqR68NGB3U28Qxm-nekr6sM-4dyRN0khWMhKC2uMpT7-ow1aX0Zp5IfkJGrm0bqP8xRN7NQ4LmwkyzUDVKIlByUrYLjrKWwEdWaLd4HsJFEODCzngrV0GVRtTBpqbe9EtimiW7bBJoj2AYyi-IdLbEq68aQmcK91zrJiIcaArB41-gnEclDZ6YIIAEB41mFShMXk6JnXtTOmE_ZDuB0RYnzQMNz7XBrHWMnjadS0"/>
+<div class="absolute top-4 left-4 bg-primary/20 backdrop-blur-md px-4 py-1 rounded-full border border-primary/40">
+<span class="text-white text-[10px] font-bold tracking-widest font-label-caps uppercase">Filling Fast</span>
+</div>
+</div>
+<div class="md:w-3/5 p-12 flex flex-col justify-center">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-primary font-label-caps text-[11px] block mb-2 tracking-[0.3em] font-bold uppercase">November 18 • 2024</span>
+<h3 class="font-display-lg text-headline-xl text-on-surface tracking-tighter">Tropical Noir: Bangkok</h3>
+</div>
+<div class="text-right">
+<p class="text-on-surface-variant text-[10px] font-label-caps tracking-widest">SUKHUMVIT VILLA</p>
+<p class="text-primary font-bold text-sm tracking-tight">GENERAL RELEASE</p>
+</div>
+</div>
+<p class="text-on-surface-variant body-md mb-8 max-w-xl">An intimate jungle-themed warehouse transformation. Expect rare house grooves and bespoke botanical cocktail experiences.</p>
+<button class="self-start px-8 py-3.5 bg-primary text-on-primary font-label-caps text-[11px] font-bold rounded-lg hover:shadow-[0_0_25px_rgba(255,0,214,0.6)] transition-all uppercase tracking-widest">
+                        Secure Tickets
+                    </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Statistics -->
+<section class="py-24 bg-surface-container-low border-y border-white/5 reveal">
+<div class="px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+<div>
+<h4 class="font-display-lg text-headline-xl md:text-5xl text-primary neon-glow mb-2 tracking-tighter">500+</h4>
+<p class="font-label-caps text-[10px] tracking-[0.4em] text-on-surface-variant font-bold uppercase">Events</p>
+</div>
+<div>
+<h4 class="font-display-lg text-headline-xl md:text-5xl text-secondary neon-glow mb-2 tracking-tighter">2k+</h4>
+<p class="font-label-caps text-[10px] tracking-[0.4em] text-on-surface-variant font-bold uppercase">Artists</p>
+</div>
+<div>
+<h4 class="font-display-lg text-headline-xl md:text-5xl text-primary-fixed neon-glow mb-2 tracking-tighter">1M+</h4>
+<p class="font-label-caps text-[10px] tracking-[0.4em] text-on-surface-variant font-bold uppercase">Attendees</p>
+</div>
+<div>
+<h4 class="font-display-lg text-headline-xl md:text-5xl text-secondary-container neon-glow mb-2 tracking-tighter">15</h4>
+<p class="font-label-caps text-[10px] tracking-[0.4em] text-on-surface-variant font-bold uppercase">Countries</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Event Solutions - Bento Grid -->
+<section class="py-32 bg-surface-container-lowest/50" id="solutions">
+<div class="px-margin-desktop max-w-container-max mx-auto reveal">
+<div class="mb-20 text-center">
+<h2 class="font-display-lg text-headline-xl text-primary mb-4 tracking-tighter neon-glow">Event Solutions</h2>
+<div class="h-1 w-24 bg-primary mx-auto rounded-full shadow-[0_0_20px_rgba(255,0,214,0.6)]"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="glass p-10 rounded-2xl neon-border-hover border border-white/5 group">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform neon-glow" style="font-variation-settings: 'FILL' 1;">music_note</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 tracking-tight">Concerts</h3>
+<p class="text-on-surface-variant body-md">High-fidelity acoustic engineering for intimate performances by global icons.</p>
+</div>
+<!-- Card 2 -->
+<div class="glass p-10 rounded-2xl neon-border-hover border border-white/5 group">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform neon-glow" style="font-variation-settings: 'FILL' 1;">festival</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 tracking-tight">Festivals</h3>
+<p class="text-on-surface-variant body-md">Multi-stage logistics and immersive environment design for large-scale gatherings.</p>
+</div>
+<!-- Card 3 -->
+<div class="glass p-10 rounded-2xl neon-border-hover border border-white/5 group">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform neon-glow" style="font-variation-settings: 'FILL' 1;">business_center</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 tracking-tight">Corporate</h3>
+<p class="text-on-surface-variant body-md">Bespoke luxury events for Fortune 500 brands looking to disrupt the norm.</p>
+</div>
+<!-- Card 4 -->
+<div class="glass p-10 rounded-2xl neon-border-hover border border-white/5 group">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform neon-glow" style="font-variation-settings: 'FILL' 1;">stars</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 tracking-tight">Brand Activations</h3>
+<p class="text-on-surface-variant body-md">Experiential marketing that lives long after the lights go down.</p>
+</div>
+<!-- Card 5 -->
+<div class="glass p-10 rounded-2xl neon-border-hover border border-white/5 group">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform neon-glow" style="font-variation-settings: 'FILL' 1;">person_search</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 tracking-tight">Artist Booking</h3>
+<p class="text-on-surface-variant body-md">Exclusive connections to A-list global talent and rising underground stars.</p>
+</div>
+<!-- Card 6 -->
+<div class="glass p-10 rounded-2xl neon-border-hover border border-white/5 group">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block group-hover:scale-110 transition-transform neon-glow" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 tracking-tight">Lighting Solutions</h3>
+<p class="text-on-surface-variant body-md">Revolutionary visual architecture utilizing next-gen laser and LED technology.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery - Masonry -->
+<section class="py-32 px-margin-desktop max-w-container-max mx-auto reveal" id="gallery">
+<h2 class="font-display-lg text-headline-xl text-on-surface mb-16 tracking-tighter">The Archive</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="space-y-4">
+<div class="glass rounded-xl overflow-hidden h-64 border border-white/5 hover:border-primary/30 transition-all">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" data-alt="A close-up shot of a professional DJ's hands on a glowing mixer, with shallow depth of field. The lighting is deep violet and cyan, reflecting off metallic surfaces in a high-end club environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo5vKiFFQR8UQPq0KZ32F0YZd5I13lmEsbxIA_kP_3m1xpDIUyD4k0Pog-NS8rI_dboS32IPTGkAllgr24ZNPVw3lNbdVEokbLMj6NfR1ahlG4a2prbbIuKdZp7FeUcXM11SwObHYfAQkw2dds6Ut4_3XbX77pWelNjwrQfgx7qaYD7sWxA2x1fZ-K9FJ16IwDbTNDTmWdX6Bwi2Kom30yIMyU7vbGP-IhveRN6RLRJ1iHohTnNZqS"/>
+</div>
+<div class="glass rounded-xl overflow-hidden h-96 border border-white/5 hover:border-primary/30 transition-all">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" data-alt="A wide cinematic shot of a massive crowd at an outdoor festival, with silhouettes of people dancing against a backdrop of intense cyan laser beams and smoke. The mood is epic and energetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANSU-ZoTVZLY_VQ_yoojcI_yIE5Sty_Yqm7t1QjTvapHsHaFAu7TNnBHtiOnXfHGM5jgraath2htGVXi9l6XRpDkaP_UVrrx-6BAg97nTyqhnYviN62WiFR-uCf390eUbEA5IPkbZnSQPUBwryksTVQlt4mU5_44sud39UwPnxAlwmmEl_vx3AXheObvHMU0xE82pdSOkD8fYEhnGei5cOTvMSYGGDcmU6x9jGkB3EJsywNaxe3E26"/>
+</div>
+</div>
+<div class="space-y-4">
+<div class="glass rounded-xl overflow-hidden h-96 border border-white/5 hover:border-primary/30 transition-all">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" data-alt="An abstract shot of light trails and motion blur in a dark space, using a palette of neon blue and magenta. The image evokes a sense of speed and high-octane energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoX021WOOG6dG5niAYTcQbIqIj1gOxBIWVqQJXz_zYnqjRYuVHV-WCqsRfFwCAt4PYbcr23uotWboEbFWBlfnnGJtF2_Ul3vMINVMhAwEs6o8WnjFyytHzZrzOeFSdNbat8ftMGmF-eUmTWDEFDvmAmTj5X_bGsDc5Fd6fbi_RWouM_PmM2GsIO3vPnfGJ3Wije0_A0nhEoac4iiYcVBdYMFmnzfVfkPp0mO0Dh70uCK7i8ETAcyBz"/>
+</div>
+<div class="glass rounded-xl overflow-hidden h-64 border border-white/5 hover:border-primary/30 transition-all">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" data-alt="An elegant VIP lounge with plush dark seating, backlit by soft cyan LED strips. A premium champagne bottle sits on a glass table, reflecting the atmospheric club lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm3OuMphddENUp5M1KNRQKeGLd3qBV1INvGFf8xZSSoqLrq8lFNQw6k03gjhsWcqlVgjDovr8XJPAgHeNR9-LsSJ7M9eieLJ742lFVpjp56PibMzi1cqhoxsLl6mi8AT7bH6iZX_iia4jdRRVD-zgU-0MMXFJXsTmWrnRCsvk7hTjn6JKsjcUnc9XkYTl-XYBnnZ8aXunzctU4UWaVsM-8YodzRIEoahCgazxZ37TFHGt864nJIEJI"/>
+</div>
+</div>
+<div class="space-y-4 hidden md:block">
+<div class="glass rounded-xl overflow-hidden h-64 border border-white/5 hover:border-primary/30 transition-all">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" data-alt="A performer in a futuristic reflective costume dancing on stage, caught in the mid-air of a leap. The background is filled with geometric digital projections in monochrome white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVz2pqYDDJ2YUWF9fSfU04bJBf3PQCCiYKALWIE5R74I5n4Cx_vbXctZ2C_rBoRroJtB5KEsQ-fwmLELc1EGsxpLlpwo0YGJMifAZrTk9prcVcOcIa7Am72QCYopMJ_Uj581fsSm2SlMocC1L-AjEOlH-iEUrMLtvEYwDiCf2HYyvNQIpc-_lWwXvBq85KNkhbPXQ6YL0ZxaNnbfF3IQwjXKFxNaKXyyaEW1VA5pDBxqkaV1fs85s8"/>
+</div>
+<div class="glass rounded-xl overflow-hidden h-96 border border-white/5 hover:border-primary/30 transition-all">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" data-alt="A bird's eye view of a glowing pool party in a modern villa, with people socializing under purple neon lights. The water is a brilliant turquoise blue." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpGuone7m4svWOaCt3PBfzGJ4r5qCW1E4vkj7RlwXAR_pIyS3DJJLjTiXFmeG2kbQyb6AEYDzwnBjMbOoB1ZqDzI5XIxgIwmN5p_jhLjdkWdLucvpLn6ecVeAhccJAJNVUtbc5sX6YobviDTMqtFhntcieQW8a7edMBo8OVe7oTOJOYXtlmeBs_gEltXP1Mar7wU8N25-5wwFuzYtqHc9buGVlpDytr_lEaWq4LW0XrHMRcHxL3WXN"/>
+</div>
+</div>
+<div class="space-y-4 hidden md:block">
+<div class="glass rounded-xl overflow-hidden h-96 border border-white/5 hover:border-primary/30 transition-all">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" data-alt="A portrait of a stylish attendee in a dimly lit space, illuminated by a single sharp beam of blue light on one side of their face. High-fashion and mysterious aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmF6_EHvKybHzXki72vjS9ktVtYi_AFi0_VAOvxH-CoEdZjyepla1G5q1JmlIj220iS-Hm3qc6XPQpAhnZFEZYigDK8GW5Ldo-4BjGd8CkyMg1SE_nD5csZQ9DbeCo7G3LnGTFhXeeQVmza-c0LHqYazgaPsPEuMoOHjoUrKYyJixUrXqE3PavyiUvkcMi8ovVMTdfdg55vUgvj6hq3S5gPgu9AxwxHAxEmHfbIxK4NP3-ofhg8RV-"/>
+</div>
+<div class="glass rounded-xl overflow-hidden h-64 border border-white/5 hover:border-primary/30 transition-all">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 opacity-80 hover:opacity-100" data-alt="A large-scale corporate event with futuristic stage design, featuring massive circular LED screens and sleek modern furniture for a high-tech presentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgwMa_nopDS2xbPFweYf_4e1s0k3XDXRtxS91XywMxGht7TUfNULjs9VrJCep5h3YBPbHExr1VZBvK2YSvTNo0jNoDjk3m2Gx7Or8aBbEUywQG5kgRqwTV9s0eECxXZ35QOp0721Xiohc_biF1L1W94Mm6KEr2QyTV9annvZg76Q4uxgbFjsO5vs8yZP9ZmczBmodhxQMeeTKE0hTxx4H9WU1pnfSastYfiuSbM8UuBglgMCvwKlKW"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-20 max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="font-display-lg text-headline-xl text-primary block mb-4 tracking-tighter neon-glow">AfterDark</span>
+<p class="text-on-surface-variant text-sm max-w-xs leading-relaxed">Elevating Asian nightlife through unrivaled production and exclusive experiences since 2018.</p>
+<div class="mt-8 flex gap-4">
+<a class="w-10 h-10 glass rounded-full flex items-center justify-center text-primary border border-primary/20 hover:bg-primary hover:text-on-primary transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg">camera</span>
+</a>
+<a class="w-10 h-10 glass rounded-full flex items-center justify-center text-primary border border-primary/20 hover:bg-primary hover:text-on-primary transition-all shadow-sm" href="#">
+<span class="material-symbols-outlined text-lg">play_circle</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-label-caps text-[11px] tracking-[0.2em] text-primary mb-8 font-bold uppercase">Explore</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium" href="#">Upcoming Events</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium" href="#">Event Solutions</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium" href="#">Artist Roster</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-[11px] tracking-[0.2em] text-primary mb-8 font-bold uppercase">Resources</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium" href="#">FAQ</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium" href="#">Contact Support</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-[11px] tracking-[0.2em] text-primary mb-8 font-bold uppercase">Newsletter</h5>
+<p class="text-on-surface-variant text-[13px] mb-6 leading-relaxed">Get priority access to ticket drops and member-only announcements.</p>
+<div class="flex">
+<input class="w-full bg-white/5 border border-white/10 rounded-l-xl px-4 py-3 text-sm focus:ring-1 focus:ring-primary focus:border-primary text-on-surface placeholder:text-on-surface-variant/40" placeholder="Your email address" type="email"/>
+<button class="bg-primary text-on-primary px-5 py-3 rounded-r-xl hover:bg-primary-fixed-dim transition-all shadow-[0_0_15px_rgba(255,0,214,0.4)]">
+<span class="material-symbols-outlined text-sm font-bold">send</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-10 border-t border-white/5 text-center">
+<p class="text-[9px] text-on-surface-variant/40 tracking-[0.5em] font-label-caps uppercase">© 2024 AfterDark Exclusive. All Rights Reserved.</p>
+</div>
+</footer>
+<script>
+        // Simple Scroll Reveal Logic
+        const reveal = () => {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', reveal);
+        // Initial check
+        reveal();
+
+        // Parallax-ish Effect for Hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroText = document.querySelector('header .relative.z-10');
+            const heroVideo = document.querySelector('header video');
+            if(heroText) {
+                heroText.style.transform = `translateY(${scrolled * 0.25}px)`;
+                heroText.style.opacity = 1 - (scrolled / 800);
+            }
+            if(heroVideo) {
+                heroVideo.style.transform = `translateY(${scrolled * 0.12}px) scale(1.05)`;
+            }
+        });
+    </script>
+</body></html>
