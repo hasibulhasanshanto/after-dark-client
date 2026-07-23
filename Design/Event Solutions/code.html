@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AfterDark | Premium Event Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .neon-border-glow:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 214, 0.2);
+            border-color: rgba(255, 0, 214, 0.5);
+        }
+        .text-glow {
+            text-shadow: 0 0 12px rgba(255, 0, 214, 0.6);
+        }
+        .button-glow {
+            box-shadow: 0 0 20px rgba(255, 0, 214, 0.3);
+        }
+        .button-glow:hover {
+            box-shadow: 0 0 35px rgba(255, 0, 214, 0.5);
+        }
+        body {
+            background-color: #0e0e0e;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 0, 214, 0.06) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(112, 0, 255, 0.05) 0%, transparent 40%);
+        }
+        .pulse-pink {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .7; transform: scale(1.2); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#86006f",
+                      "on-tertiary-container": "#ff2fd6",
+                      "on-error": "#690005",
+                      "on-error-container": "#ffdad6",
+                      "surface": "#131313",
+                      "on-primary-container": "#3b002f",
+                      "surface-bright": "#393939",
+                      "primary-fixed": "#ffd8ee",
+                      "inverse-surface": "#e5e2e1",
+                      "secondary-fixed": "#e9ddff",
+                      "on-tertiary-fixed": "#3b002f",
+                      "on-surface": "#e5e2e1",
+                      "on-primary": "#ffffff",
+                      "tertiary-container": "#ffcaea",
+                      "surface-container-high": "#2a2a2a",
+                      "surface-variant": "#353534",
+                      "on-secondary-container": "#ddcdff",
+                      "on-primary-fixed-variant": "#86006f",
+                      "surface-tint": "#ffade2",
+                      "surface-container-highest": "#353534",
+                      "secondary-container": "#7000ff",
+                      "on-secondary-fixed": "#23005b",
+                      "on-primary-fixed": "#3b002f",
+                      "outline-variant": "#3b494b",
+                      "on-background": "#e5e2e1",
+                      "secondary": "#d1bcff",
+                      "inverse-primary": "#af0092",
+                      "on-secondary-fixed-variant": "#5700c9",
+                      "on-surface-variant": "#b9cacb",
+                      "surface-container-lowest": "#0e0e0e",
+                      "on-tertiary": "#5f004e",
+                      "primary": "#FF00D6",
+                      "tertiary-fixed-dim": "#ffade2",
+                      "surface-dim": "#131313",
+                      "surface-container-low": "#1c1b1b",
+                      "outline": "#849495",
+                      "inverse-on-surface": "#313030",
+                      "secondary-fixed-dim": "#d1bcff",
+                      "primary-fixed-dim": "#ffade2",
+                      "on-secondary": "#3c0090",
+                      "error": "#ffb4ab",
+                      "surface-container": "#201f1f",
+                      "primary-container": "#FF00D6",
+                      "tertiary": "#fff2f7",
+                      "background": "#131313",
+                      "tertiary-fixed": "#ffd8ee",
+                      "error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "margin-desktop": "64px",
+                      "container-max": "1440px",
+                      "gutter": "24px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "headline-xl-mobile": ["Space Grotesk"],
+                      "display-lg-mobile": ["Space Grotesk"],
+                      "display-lg": ["Space Grotesk"],
+                      "body-lg": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "headline-md": ["Space Grotesk"],
+                      "headline-xl": ["Space Grotesk"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "display-lg-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "headline-xl": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+</head>
+<body class="bg-surface-container-lowest font-body-md text-on-surface antialiased">
+<div class="bg-mesh"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-[0_0_25px_rgba(255,0,214,0.1)] z-50">
+<div class="flex justify-between items-center px-margin-desktop py-unit-2 max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-md tracking-tighter text-primary text-glow">
+            AfterDark
+        </div>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">Home</a>
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">About Us</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-caps text-label-caps" href="#">Event Solutions</a>
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">Gallery</a>
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps hover:scale-105 active:scale-95 transition-all button-glow">
+            Tickets
+        </button>
+</div>
+</nav>
+<main class="relative pt-32">
+<!-- Hero Section -->
+<section class="relative px-margin-desktop max-w-container-max mx-auto mb-32 min-h-[716px] flex flex-col justify-center overflow-hidden">
+<div class="relative z-10 max-w-3xl">
+<div class="flex items-center gap-3 mb-6">
+<span class="w-2 h-2 rounded-full bg-primary pulse-pink shadow-[0_0_12px_#FF00D6]"></span>
+<span class="font-label-caps text-label-caps tracking-widest text-secondary uppercase">Elite Experiences</span>
+</div>
+<h1 class="font-display-lg text-display-lg mb-8 leading-tight">Architecting the <span class="text-primary italic text-glow">Future</span> of Nightlife.</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-12">
+                We redefine the standards of luxury entertainment. From concept to closing, AfterDark provides bespoke solutions for the world's most exclusive events.
+            </p>
+<div class="flex gap-4">
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 rounded-full transition-all button-glow">Start Planning</button>
+<button class="border border-outline-variant bg-white/5 backdrop-blur-md font-label-caps text-label-caps px-8 py-4 rounded-full hover:bg-white/10 transition-all">View Portfolios</button>
+</div>
+</div>
+</section>
+<!-- Services Bento Grid -->
+<section class="px-margin-desktop max-w-container-max mx-auto mb-32">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-xl">
+<h2 class="font-headline-xl text-headline-xl mb-4 text-on-surface">Service Verticals</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Precision engineering for unforgettable moments. Our comprehensive suite of services covers every facet of high-end event execution.</p>
+</div>
+<div class="h-px flex-1 bg-gradient-to-r from-outline-variant/0 via-outline-variant to-outline-variant/0 hidden md:block mb-6"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Concerts & Festivals -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="glass-panel neon-border-glow rounded-xl p-8 h-full transition-all duration-500 overflow-hidden relative min-h-[400px]">
+<div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-[140px] text-primary" style="font-variation-settings: 'FILL' 0;">festival</span>
+</div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<span class="material-symbols-outlined text-primary text-5xl mb-6 drop-shadow-[0_0_15px_rgba(255,0,214,0.6)]">festival</span>
+<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors text-on-surface">Concerts &amp; Festivals</h3>
+<p class="text-on-surface-variant max-w-md font-body-md">Large-scale stadium productions and multi-day boutique festivals requiring complex logistics and high-fidelity sensory output.</p>
+</div>
+<div class="flex gap-2 mt-8">
+<span class="px-4 py-1.5 glass-panel text-[11px] font-label-caps uppercase tracking-wider text-primary border border-primary/20 rounded-full">Grand Production</span>
+<span class="px-4 py-1.5 glass-panel text-[11px] font-label-caps uppercase tracking-wider text-primary border border-primary/20 rounded-full">Mass Logistics</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Corporate Events -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="glass-panel neon-border-glow rounded-xl p-8 h-full transition-all duration-500 min-h-[400px]">
+<div class="flex flex-col h-full">
+<span class="material-symbols-outlined text-primary text-5xl mb-6 drop-shadow-[0_0_15px_rgba(255,0,214,0.6)]">corporate_fare</span>
+<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors text-on-surface">Corporate Events</h3>
+<p class="text-on-surface-variant font-body-md">Exclusive galas, annual meetings, and high-stakes networking events tailored for the modern enterprise elite.</p>
+<div class="mt-auto pt-8 flex items-center gap-2 text-primary">
+<span class="font-label-caps text-label-caps opacity-0 group-hover:opacity-100 transition-opacity">Explore Vertical</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Artist Booking -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="glass-panel neon-border-glow rounded-xl p-8 h-full transition-all duration-500 min-h-[400px]">
+<div class="flex flex-col h-full">
+<span class="material-symbols-outlined text-primary text-5xl mb-6 drop-shadow-[0_0_15px_rgba(255,0,214,0.6)]">star</span>
+<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors text-on-surface">Artist Booking</h3>
+<p class="text-on-surface-variant font-body-md">Global talent acquisition including A-list DJs, live performers, and exclusive guest speakers for private affairs.</p>
+<div class="mt-auto pt-8 flex items-center gap-2 text-primary">
+<span class="font-label-caps text-label-caps opacity-0 group-hover:opacity-100 transition-opacity">Discover Talent</span>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Brand Activations -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="glass-panel neon-border-glow rounded-xl p-8 h-full transition-all duration-500 overflow-hidden relative min-h-[400px]">
+<div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-30 transition-opacity">
+<span class="material-symbols-outlined text-[140px] text-primary">campaign</span>
+</div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div>
+<span class="material-symbols-outlined text-primary text-5xl mb-6 drop-shadow-[0_0_15px_rgba(255,0,214,0.6)]">campaign</span>
+<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors text-on-surface">Brand Activations</h3>
+<p class="text-on-surface-variant max-w-md font-body-md">Immersive experiential marketing that bridges the gap between brand identity and consumer emotion through cinematic execution.</p>
+</div>
+<div class="flex gap-2 mt-8">
+<span class="px-4 py-1.5 glass-panel text-[11px] font-label-caps uppercase tracking-wider text-primary border border-primary/20 rounded-full">Experiential</span>
+<span class="px-4 py-1.5 glass-panel text-[11px] font-label-caps uppercase tracking-wider text-primary border border-primary/20 rounded-full">Virality Focused</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Production Services (Stage, Sound, Light) -->
+<section class="px-margin-desktop max-w-container-max mx-auto mb-32 relative">
+<div class="absolute -left-20 top-0 w-64 h-64 bg-primary/10 blur-[120px] rounded-full"></div>
+<div class="flex flex-col items-center text-center mb-16">
+<h2 class="font-headline-xl text-headline-xl mb-4 text-on-surface">Technical Production</h2>
+<div class="w-24 h-1 bg-gradient-to-r from-primary via-primary/50 to-secondary-container rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Lighting -->
+<div class="flex flex-col gap-6 p-1 glass-panel rounded-xl overflow-hidden group hover:bg-white/5 transition-all duration-500">
+<div class="h-64 w-full relative overflow-hidden rounded-lg">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBGv4t96za3dSVE0qDcur8cbWiFZTF41yKyAa5Q8YCKL_pr0zqlRXeJytO4Lm7Cuhzg0eJZxDbYmJ5VhHBi_tTqNE-PQ4M3g4XAzgcbxf727MT5xRrksYCzhtGmkd-4rgfo2fi1sDZ5MlUy7eLi7pCaIRgPVtAUQeMSCFciz-IqfTLrgQyJ_3s5sM67he4n8YG2ttXYkUmOIC2NWGnq-fJrqUbY1Y5O6SaTmMVDlR29g2JluROQBndp')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary drop-shadow-[0_0_10px_rgba(255,0,214,0.8)]">lightbulb</span>
+<span class="font-label-caps text-label-caps tracking-widest text-primary-fixed">Advanced Lighting</span>
+</div>
+</div>
+<div class="px-5 pb-8">
+<h4 class="font-headline-md text-headline-md mb-3 text-on-surface group-hover:text-primary transition-colors">Cinematic Atmosphere</h4>
+<p class="text-on-surface-variant text-body-md leading-relaxed">Custom lighting plots including kinetic rigs, laser arrays, and synchronized DMX control systems.</p>
+</div>
+</div>
+<!-- Sound -->
+<div class="flex flex-col gap-6 p-1 glass-panel rounded-xl overflow-hidden group hover:bg-white/5 transition-all duration-500">
+<div class="h-64 w-full relative overflow-hidden rounded-lg">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCSdVIeazonLRV2ftVdUC922GDNI90QCZ2oQaKEDElYgL3EDWBPW97nDSd-m3Ohi47UVxYEyUe3vCjR-p5d8dwIDUzqlDV9Sa6RW-a7MAfT-jnXK9gj9Sstzc-X1-_MypFvIKDlF8vBOt7ecJ1o2y3VNTM0GXXwYcHBhzwJmJbtNB0Z0gtfctvgGBto1pupTvbCe16jd4rM0hlMDehScQoobbaqvwmHSBcLJzi2Taw5bI85S1jg2HcY')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary drop-shadow-[0_0_10px_rgba(255,0,214,0.8)]">surround_sound</span>
+<span class="font-label-caps text-label-caps tracking-widest text-primary-fixed">Sonic Engineering</span>
+</div>
+</div>
+<div class="px-5 pb-8">
+<h4 class="font-headline-md text-headline-md mb-3 text-on-surface group-hover:text-primary transition-colors">Immersive Audio</h4>
+<p class="text-on-surface-variant text-body-md leading-relaxed">L-Acoustics and d&amp;b audiotechnik systems tuned by master acoustic engineers for crystalline clarity.</p>
+</div>
+</div>
+<!-- Stage -->
+<div class="flex flex-col gap-6 p-1 glass-panel rounded-xl overflow-hidden group hover:bg-white/5 transition-all duration-500">
+<div class="h-64 w-full relative overflow-hidden rounded-lg">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDOBt4LRQKelB1ByxNv_cu3Or6hecSZ3tDN16CMMpHE_CjuqJKvMzX2Hp21k6lHM7cChfZEIe7RYnzRwBMi8IkL852Ph-IPfzXITuyYgPg2eEKhO5ADH5la3h_jJGebITRn-NyrN4_kS-dKsAU7bw6Cev96XDuHQ5ykuu-vyXmlsjBEOFUkyYz9ejq3f8Myn_Z_dGp-A02XsSeZYlunNn3NFhpdtmCn3zePBrlWmz1JlCmfBZWQoP4W')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary drop-shadow-[0_0_10px_rgba(255,0,214,0.8)]">architecture</span>
+<span class="font-label-caps text-label-caps tracking-widest text-primary-fixed">Structural Design</span>
+</div>
+</div>
+<div class="px-5 pb-8">
+<h4 class="font-headline-md text-headline-md mb-3 text-on-surface group-hover:text-primary transition-colors">Stage Craft</h4>
+<p class="text-on-surface-variant text-body-md leading-relaxed">Modular stage architecture, curved LED walls, and automated scenic elements for dynamic visuals.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="px-margin-desktop max-w-container-max mx-auto mb-32">
+<div class="glass-panel rounded-xl p-12 md:p-24 text-center relative overflow-hidden border border-primary/10">
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-secondary-container opacity-10 blur-[150px] rounded-full"></div>
+<div class="absolute -left-20 -top-20 w-96 h-96 bg-primary/10 blur-[150px] rounded-full"></div>
+<h2 class="font-display-lg text-headline-xl md:text-display-lg mb-8 text-on-surface">Ready to Elevate Your Vision?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">
+                Connect with our executive production team to begin crafting your next premium experience. Limited availability for 2024 season.
+            </p>
+<div class="flex flex-col md:flex-row gap-6 justify-center">
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-12 py-5 rounded-full transition-all button-glow">Schedule Consultation</button>
+<button class="border border-outline-variant font-label-caps text-label-caps px-12 py-5 rounded-full hover:bg-white/10 transition-all text-on-surface">Download Services PDF</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full rounded-t-xl mt-32">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-16 max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<div class="font-display-lg text-headline-xl text-primary mb-6 text-glow">
+                AfterDark
+            </div>
+<p class="text-on-surface-variant text-body-md">The definitive standard in global event production and nightlife management.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-caps text-label-caps text-primary uppercase tracking-widest text-[11px]">Discover</h5>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Case Studies</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Artist Roster</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Venues</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-caps text-label-caps text-primary uppercase tracking-widest text-[11px]">Company</h5>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">FAQ</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Careers</a>
+</div>
+<div class="flex flex-col gap-4">
+<h5 class="font-label-caps text-label-caps text-primary uppercase tracking-widest text-[11px]">Newsletter</h5>
+<p class="text-[12px] text-on-surface-variant font-body-md">Exclusive updates from the underworld.</p>
+<div class="flex border-b border-outline-variant pb-2 mt-4">
+<input class="bg-transparent border-none focus:ring-0 text-sm flex-1 text-on-surface" placeholder="email@example.com" type="email"/>
+<button class="material-symbols-outlined text-primary hover:scale-110 transition-transform">arrow_forward</button>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-8 border-t border-outline-variant/30 text-center text-[12px] text-on-surface-variant font-label-caps">
+        © 2024 AfterDark Exclusive. All Rights Reserved.
+    </div>
+</footer>
+<script>
+    // Simple parallax effect for glass cards
+    document.addEventListener('mousemove', (e) => {
+        const amount = 10;
+        const x = (e.clientX / window.innerWidth - 0.5) * amount;
+        const y = (e.clientY / window.innerHeight - 0.5) * amount;
+        
+        document.querySelectorAll('.glass-panel').forEach(panel => {
+            panel.style.transform = `translateY(${y/2}px)`;
+        });
+    });
+
+    // Add reveal animation on scroll
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+        observer.observe(section);
+    });
+</script>
+</body></html>
