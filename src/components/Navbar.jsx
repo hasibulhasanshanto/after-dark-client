@@ -49,7 +49,7 @@ export default function Navbar() {
           <NavLink
             className={({ isActive }) =>
               `text-label-caps transition-all duration-300 ${
-                isActive ? "text-primary border-b-2 border-primary pb-1" : "text-on-surface/70 hover:text-primary"
+                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
               }`
             }
             to="/"
@@ -57,38 +57,57 @@ export default function Navbar() {
           >
             Home
           </NavLink>
-          <a
-            className="text-label-caps text-on-surface/70 hover:text-primary transition-colors duration-300"
-            href="/#about"
-          >
-            About Us
-          </a>
           <NavLink
             className={({ isActive }) =>
               `text-label-caps transition-all duration-300 ${
-                isActive ? "text-primary border-b-2 border-primary pb-1" : "text-on-surface/70 hover:text-primary"
+                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
+              }`
+            }
+            to="/about"
+          >
+            About Us
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `text-label-caps transition-all duration-300 ${
+                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
               }`
             }
             to="/solutions"
           >
             Event Solutions
           </NavLink>
-          <a
-            className="text-label-caps text-on-surface/70 hover:text-primary transition-colors duration-300"
-            href="/#gallery"
+          <NavLink
+            className={({ isActive }) =>
+              `text-label-caps transition-all duration-300 ${
+                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
+              }`
+            }
+            to="/gallery"
           >
             Gallery
-          </a>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `text-label-caps transition-all duration-300 ${
+                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
+              }`
+            }
+            to="/contact"
+          >
+            Contact
+          </NavLink>
         </div>
 
         <div className="hidden lg:block">
-          <button
-            className={`bg-primary text-on-primary text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,0,214,0.5)] ${
+          <Link
+            to="/contact"
+            className={`inline-block bg-primary text-on-primary text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,0,214,0.5)] ${
               isScrolled ? "px-6 py-2 text-xs" : "px-7 py-2.5 text-sm"
             }`}
           >
             Tickets
-          </button>
+          </Link>
         </div>
 
         {/* Mobile Hamburger Icon */}
@@ -106,39 +125,47 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-xl border-b border-white/5 flex flex-col items-center py-8 gap-6 shadow-2xl">
           <Link
-            className="text-label-caps text-primary"
+            className="text-label-caps text-on-surface hover:text-primary"
             to="/"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Home
           </Link>
-          <a
-            className="text-label-caps text-on-surface"
-            href="/#about"
+          <Link
+            className="text-label-caps text-on-surface hover:text-primary"
+            to="/about"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             About Us
-          </a>
+          </Link>
           <Link
-            className="text-label-caps text-on-surface"
+            className="text-label-caps text-on-surface hover:text-primary"
             to="/solutions"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Event Solutions
           </Link>
-          <a
-            className="text-label-caps text-on-surface"
-            href="/#gallery"
+          <Link
+            className="text-label-caps text-on-surface hover:text-primary"
+            to="/gallery"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Gallery
-          </a>
-          <button
-            className="mt-4 bg-primary text-on-primary px-10 py-3 text-label-caps rounded-full shadow-[0_0_20px_rgba(255,0,214,0.5)]"
+          </Link>
+          <Link
+            className="text-label-caps text-on-surface hover:text-primary"
+            to="/contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            Contact
+          </Link>
+          <Link
+            to="/contact"
+            className="mt-2 bg-primary text-on-primary px-10 py-3 text-label-caps rounded-full shadow-[0_0_20px_rgba(255,0,214,0.5)]"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Tickets
-          </button>
+          </Link>
         </div>
       )}
     </nav>

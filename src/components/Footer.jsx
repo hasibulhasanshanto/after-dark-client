@@ -1,32 +1,34 @@
+import { Link } from "react-router";
+
 export default function Footer() {
   return (
     <footer className="bg-surface-container-lowest border-t border-outline-variant">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 px-5 md:px-16 py-16 md:py-20 max-w-[1440px] mx-auto">
         <div>
-          <span className="text-3xl md:text-[40px] font-display-lg text-primary block mb-4 tracking-tighter neon-glow">
+          <Link to="/" className="text-3xl md:text-[40px] font-display-lg text-primary block mb-4 tracking-tighter neon-glow">
             AfterDark
-          </span>
+          </Link>
           <p className="text-on-surface-variant text-sm max-w-xs leading-relaxed">
             Elevating Asian nightlife through unrivaled production and
             exclusive experiences since 2018.
           </p>
           <div className="mt-8 flex gap-4">
-            <a
+            <Link
               className="w-10 h-10 glass rounded-full flex items-center justify-center text-primary border border-primary/20 hover:bg-primary hover:text-on-primary transition-all shadow-sm"
-              href="#"
+              to="/gallery"
             >
               <span className="material-symbols-outlined text-lg">
                 camera
               </span>
-            </a>
-            <a
+            </Link>
+            <Link
               className="w-10 h-10 glass rounded-full flex items-center justify-center text-primary border border-primary/20 hover:bg-primary hover:text-on-primary transition-all shadow-sm"
-              href="#"
+              to="/gallery"
             >
               <span className="material-symbols-outlined text-lg">
                 play_circle
               </span>
-            </a>
+            </Link>
           </div>
         </div>
         <div>
@@ -35,36 +37,36 @@ export default function Footer() {
           </h5>
           <ul className="space-y-4">
             <li>
-              <a
+              <Link
                 className="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium"
-                href="#"
+                to="/about"
               >
-                Upcoming Events
-              </a>
+                About Our Vision
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium"
-                href="#"
+                to="/solutions"
               >
                 Event Solutions
-              </a>
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium"
-                href="#"
+                to="/gallery"
               >
-                Artist Roster
-              </a>
+                Visual Gallery
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium"
-                href="#"
+                to="/contact"
               >
-                Careers
-              </a>
+                Contact Concierge
+              </Link>
             </li>
           </ul>
         </div>
@@ -74,36 +76,36 @@ export default function Footer() {
           </h5>
           <ul className="space-y-4">
             <li>
-              <a
+              <Link
                 className="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium"
-                href="#"
+                to="/contact"
               >
-                Privacy Policy
-              </a>
+                VIP Reservations
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium"
-                href="#"
+                to="/about"
               >
-                Terms of Service
-              </a>
+                The Architects
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium"
-                href="#"
+                to="/solutions"
               >
-                FAQ
-              </a>
+                Corporate Booking
+              </Link>
             </li>
             <li>
-              <a
+              <Link
                 className="text-on-surface-variant hover:text-primary transition-all text-[13px] font-medium"
-                href="#"
+                to="/contact"
               >
                 Contact Support
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

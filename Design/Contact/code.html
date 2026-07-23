@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0e0e0e;
+            color: #e5e2e1;
+            overflow-x: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .neon-glow-primary {
+            box-shadow: 0 0 20px rgba(255, 0, 214, 0.15);
+        }
+
+        .neon-border-focus:focus-within {
+            border-bottom: 2px solid #ff00d6;
+            box-shadow: 0 4px 12px -2px rgba(255, 0, 214, 0.3);
+        }
+
+        .pulse-dot {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 214, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 0, 214, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 0, 214, 0); }
+        }
+
+        .map-gradient-overlay {
+            background: linear-gradient(to right, #0e0e0e 0%, transparent 40%, transparent 60%, #0e0e0e 100%),
+                        linear-gradient(to bottom, #0e0e0e 0%, transparent 20%, transparent 80%, #0e0e0e 100%);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .neon-btn-glow {
+            box-shadow: 0 0 15px rgba(255, 0, 214, 0.5), 0 0 30px rgba(255, 0, 214, 0.2);
+        }
+        
+        .neon-marker {
+            filter: drop-shadow(0 0 8px #ff00d6);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#86006f",
+                        "on-tertiary-container": "#b00093",
+                        "on-error": "#690005",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#131313",
+                        "on-primary-container": "#3b002f",
+                        "surface-bright": "#393939",
+                        "primary-fixed": "#ffd8ee",
+                        "inverse-surface": "#e5e2e1",
+                        "secondary-fixed": "#e9ddff",
+                        "on-tertiary-fixed": "#3b002f",
+                        "on-surface": "#e5e2e1",
+                        "on-primary": "#5f004e",
+                        "tertiary-container": "#ffcaea",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-variant": "#353534",
+                        "on-secondary-container": "#ddcdff",
+                        "on-primary-fixed-variant": "#86006f",
+                        "surface-tint": "#ff00d6",
+                        "surface-container-highest": "#353534",
+                        "secondary-container": "#7000ff",
+                        "on-secondary-fixed": "#23005b",
+                        "on-primary-fixed": "#3b002f",
+                        "outline-variant": "#3b494b",
+                        "on-background": "#e5e2e1",
+                        "secondary": "#d1bcff",
+                        "inverse-primary": "#af0092",
+                        "on-secondary-fixed-variant": "#5700c9",
+                        "on-surface-variant": "#b9cacb",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-tertiary": "#5f004e",
+                        "primary": "#ffade2",
+                        "tertiary-fixed-dim": "#ffade2",
+                        "surface-dim": "#131313",
+                        "surface-container-low": "#1c1b1b",
+                        "outline": "#849495",
+                        "inverse-on-surface": "#313030",
+                        "secondary-fixed-dim": "#d1bcff",
+                        "primary-fixed-dim": "#ff00d6",
+                        "on-secondary": "#3c0090",
+                        "error": "#ffb4ab",
+                        "surface-container": "#201f1f",
+                        "primary-container": "#ff00d6",
+                        "tertiary": "#fff2f7",
+                        "background": "#131313",
+                        "tertiary-fixed": "#ffd8ee",
+                        "error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "margin-desktop": "64px",
+                        "container-max": "1440px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-xl-mobile": ["Space Grotesk"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-xl": ["Space Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "display-lg-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                        "headline-xl": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-surface-container-lowest text-on-surface selection:bg-primary-container selection:text-white">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-white/5 backdrop-blur-xl border-b border-white/10 z-50 shadow-[0_0_20px_rgba(255,0,214,0.15)]">
+<div class="flex justify-between items-center px-margin-desktop py-unit-2 max-w-container-max mx-auto h-20">
+<div class="font-display-lg text-headline-md tracking-tighter text-primary">AfterDark</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">Home</a>
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">About Us</a>
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">Event Solutions</a>
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">Gallery</a>
+<a class="text-primary-fixed-dim font-bold border-b-2 border-primary-container pb-1 font-label-caps text-label-caps" href="#">Contact</a>
+</div>
+<button class="bg-primary-container text-white px-6 py-2 rounded-full font-label-caps text-label-caps scale-95 active:scale-90 transition-transform hover:shadow-[0_0_15px_rgba(255,0,214,0.4)]">
+            Tickets
+        </button>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-20 min-h-screen">
+<!-- Hero Section with Map Background -->
+<section class="relative h-[600px] w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full grayscale invert opacity-30 bg-cover bg-center" data-alt="A cinematic, high-contrast satellite view of Tokyo's city grid at night, featuring glowing interconnected light arteries and dense urban structures." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDZYXOH1DP8mknIrTOmB3dKO6Wiiw6WxR4BILVBwifWIQiWOnUHgEe3l18Y3v5hxu0NeO0jFm7Sdx6cdUZM3kOZj5i7wmPsOhMBYS76f5RghxSoLy-MSzqKoIef-dRuK4mnwnjzhFRUdFc-kYBUHn2sZFGLv15AUHyIrfud9gay_SihzH29kN9s_VRIeOXLFGEERF_UAkLje2n--DSmWvWvUCdqpHzLxp2dSqGKNKFpLtfht3gDraWV')">
+</div>
+<div class="absolute inset-0 map-gradient-overlay"></div>
+</div>
+<div class="relative z-10 text-center px-margin-mobile">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6 tracking-tighter">Connect With Us</h1>
+<p class="font-body-md text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Experience the pinnacle of nightlife. Whether it's an inquiry for a bespoke event or a VIP reservation, our concierge is at your service.
+            </p>
+</div>
+</section>
+<!-- Interaction Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-20 -mt-24 relative z-20">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: Premium Contact Form -->
+<div class="lg:col-span-7">
+<div class="glass-card rounded-xl p-8 md:p-12 neon-glow-primary border-primary-container/20">
+<div class="flex items-center gap-3 mb-10">
+<div class="w-2 h-2 bg-primary-fixed-dim rounded-full pulse-dot"></div>
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Secure Inquiry Channel</span>
+</div>
+<form class="space-y-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
+<div class="relative border-b border-outline-variant neon-border-focus group">
+<label class="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary-fixed-dim uppercase block mb-1">Full Name</label>
+<input class="bg-transparent border-none w-full py-3 px-0 text-on-surface placeholder:text-surface-container-highest focus:ring-0 font-body-md" placeholder="Johnathan Doe" type="text"/>
+</div>
+<div class="relative border-b border-outline-variant neon-border-focus group">
+<label class="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary-fixed-dim uppercase block mb-1">Email Address</label>
+<input class="bg-transparent border-none w-full py-3 px-0 text-on-surface placeholder:text-surface-container-highest focus:ring-0 font-body-md" placeholder="j.doe@exclusive.com" type="email"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
+<div class="relative border-b border-outline-variant neon-border-focus group">
+<label class="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary-fixed-dim uppercase block mb-1">Service Type</label>
+<select class="bg-transparent border-none w-full py-3 px-0 text-on-surface focus:ring-0 font-body-md appearance-none">
+<option class="bg-surface-container">VIP Table Booking</option>
+<option class="bg-surface-container">Corporate Event</option>
+<option class="bg-surface-container">Private Gala</option>
+<option class="bg-surface-container">Artist Booking</option>
+</select>
+</div>
+<div class="relative border-b border-outline-variant neon-border-focus group">
+<label class="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary-fixed-dim uppercase block mb-1">Guest Count</label>
+<input class="bg-transparent border-none w-full py-3 px-0 text-on-surface placeholder:text-surface-container-highest focus:ring-0 font-body-md" placeholder="0" type="number"/>
+</div>
+</div>
+<div class="relative border-b border-outline-variant neon-border-focus group">
+<label class="font-label-caps text-label-caps text-on-surface-variant group-focus-within:text-primary-fixed-dim uppercase block mb-1">Message</label>
+<textarea class="bg-transparent border-none w-full py-3 px-0 text-on-surface placeholder:text-surface-container-highest focus:ring-0 font-body-md resize-none" placeholder="How can we curate your experience?" rows="4"></textarea>
+</div>
+<div class="pt-6">
+<button class="w-full bg-primary-container text-white py-5 rounded-lg text-headline-md font-bold uppercase tracking-[0.15em] hover:scale-[1.02] active:scale-[0.98] transition-all neon-btn-glow flex items-center justify-center gap-3 group" type="submit">
+                                Send Inquiry
+                                <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Right: Concierge Details & Socials -->
+<div class="lg:col-span-5 flex flex-col gap-gutter">
+<!-- Concierge Card -->
+<div class="glass-card rounded-xl p-10 flex-1 border-white/5">
+<h3 class="font-headline-md text-primary mb-10">Concierge Services</h3>
+<div class="space-y-10">
+<div class="flex items-start gap-6">
+<div class="p-4 bg-white/5 rounded-xl border border-white/10 text-primary-fixed-dim neon-marker">
+<span class="material-symbols-outlined text-3xl">location_on</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">Headquarters</p>
+<p class="font-body-md text-on-surface text-lg">Minato-ku, Tokyo, 106-0032 Japan</p>
+<p class="font-body-md text-on-surface mt-1 opacity-70">Marina Bay Sands, Singapore</p>
+</div>
+</div>
+<div class="flex items-start gap-6">
+<div class="p-4 bg-white/5 rounded-xl border border-white/10 text-primary-fixed-dim neon-marker">
+<span class="material-symbols-outlined text-3xl">mail</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">Direct Email</p>
+<p class="font-body-md text-on-surface text-lg">concierge@afterdark.exclusive</p>
+</div>
+</div>
+<div class="pt-10 border-t border-white/10">
+<a class="flex items-center justify-between p-6 bg-primary-container/10 border border-primary-container/20 rounded-xl hover:bg-primary-container/20 transition-all group" href="#">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary-container text-white rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(255,0,214,0.4)]">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">chat</span>
+</div>
+<div>
+<p class="font-label-caps text-label-caps text-primary-fixed-dim">WhatsApp Concierge</p>
+<p class="font-body-md text-on-surface text-sm opacity-80">Response within 5 mins</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Social Media Bento -->
+<div class="grid grid-cols-2 gap-gutter">
+<a class="glass-card rounded-xl p-8 flex flex-col items-center justify-center gap-4 hover:bg-primary-container/10 hover:border-primary-container/30 transition-all border border-white/5 group" href="#">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors group-hover:scale-110 duration-300">camera</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Instagram</span>
+</a>
+<a class="glass-card rounded-xl p-8 flex flex-col items-center justify-center gap-4 hover:bg-primary-container/10 hover:border-primary-container/30 transition-all border border-white/5 group" href="#">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-primary-fixed-dim transition-colors group-hover:scale-110 duration-300">movie</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">TikTok</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Atmospheric Visual Element -->
+<div class="py-24 flex justify-center opacity-40">
+<div class="w-px h-40 bg-gradient-to-b from-transparent via-primary-fixed-dim to-transparent"></div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest w-full border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-20 max-w-container-max mx-auto">
+<div class="col-span-1">
+<div class="font-display-lg text-headline-xl text-primary-fixed-dim mb-6">AfterDark</div>
+<p class="text-on-surface-variant font-body-md max-w-xs leading-relaxed">
+                Redefining luxury nightlife through exclusive events and immersive digital experiences.
+            </p>
+</div>
+<div class="col-span-1 flex flex-col gap-6">
+<h4 class="font-label-caps text-label-caps text-primary-fixed-dim tracking-widest uppercase">Discover</h4>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Upcoming Events</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Artist Roster</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Global Venues</a>
+</div>
+</div>
+<div class="col-span-1 flex flex-col gap-6">
+<h4 class="font-label-caps text-label-caps text-primary-fixed-dim tracking-widest uppercase">Company</h4>
+<div class="flex flex-col gap-3">
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Careers</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all font-body-md" href="#">Terms of Service</a>
+</div>
+</div>
+<div class="col-span-1 flex flex-col gap-6">
+<h4 class="font-label-caps text-label-caps text-primary-fixed-dim tracking-widest uppercase">Stay Notified</h4>
+<div class="flex gap-2 p-1 bg-surface-container border border-outline-variant rounded-lg">
+<input class="bg-transparent border-none px-4 py-2 w-full focus:ring-0 outline-none text-on-surface placeholder:text-on-surface/30" placeholder="Email" type="email"/>
+<button class="bg-primary-fixed-dim text-on-primary-fixed p-2 rounded-md hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="px-margin-desktop py-10 border-t border-white/5 text-center">
+<p class="text-on-surface-variant/40 font-label-caps text-[10px] uppercase tracking-[0.3em]">
+            © 2024 AfterDark Exclusive. All Rights Reserved.
+        </p>
+</div>
+</footer>
+<script>
+    // Micro-interactions and focus effects
+    document.querySelectorAll('input, textarea, select').forEach(element => {
+        element.addEventListener('focus', () => {
+            element.parentElement.classList.add('border-primary-fixed-dim');
+        });
+        element.addEventListener('blur', () => {
+            element.parentElement.classList.remove('border-primary-fixed-dim');
+        });
+    });
+
+    // Form submission animation mock
+    document.querySelector('form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector('button');
+        const originalContent = btn.innerHTML;
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Sending...';
+        btn.classList.add('opacity-80', 'pointer-events-none');
+        
+        setTimeout(() => {
+            btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Inquiry Received';
+            btn.classList.remove('bg-primary-container', 'text-white');
+            btn.classList.add('bg-green-500', 'text-white');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.classList.remove('bg-green-500', 'text-white', 'opacity-80', 'pointer-events-none');
+                btn.classList.add('bg-primary-container', 'text-white');
+            }, 3000);
+        }, 2000);
+    });
+</script>
+</body></html>

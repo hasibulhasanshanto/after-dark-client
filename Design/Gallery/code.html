@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AfterDark | Gallery - The Visual Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Inter:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: #ff2fd6;
+            box-shadow: 0 0 30px rgba(255, 0, 214, 0.2);
+            transform: translateY(-4px) scale(1.02);
+        }
+        .masonry-grid {
+            column-count: 1;
+            column-gap: 24px;
+        }
+        @media (min-width: 768px) { .masonry-grid { column-count: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+        
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 24px;
+        }
+        
+        .neon-glow-text {
+            text-shadow: 0 0 10px rgba(255, 0, 214, 0.6), 0 0 20px rgba(255, 0, 214, 0.4);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0e0e0e;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #353534;
+            border-radius: 10px;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        .pulse-indicator {
+            animation: pulse-glow 2s infinite ease-in-out;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#5700c9",
+                    "inverse-surface": "#e5e2e3",
+                    "surface-container-high": "#2a2a2b",
+                    "inverse-on-surface": "#313031",
+                    "secondary": "#d3fbff",
+                    "error-container": "#93000a",
+                    "primary-container": "#ff2fd6",
+                    "surface-container": "#201f20",
+                    "surface-container-low": "#1c1b1c",
+                    "surface-dim": "#131314",
+                    "surface-bright": "#3a393a",
+                    "primary-fixed-dim": "#ffade2",
+                    "on-surface": "#e5e2e3",
+                    "primary-fixed": "#ffd8ee",
+                    "on-secondary": "#00363a",
+                    "on-primary-fixed-variant": "#86006f",
+                    "on-secondary-fixed": "#002022",
+                    "on-background": "#e5e2e3",
+                    "on-primary-fixed": "#3b002f",
+                    "secondary-container": "#00eefc",
+                    "on-tertiary-fixed": "#23005b",
+                    "outline": "#a68899",
+                    "inverse-primary": "#af0092",
+                    "on-secondary-fixed-variant": "#004f54",
+                    "on-primary-container": "#530044",
+                    "surface-variant": "#353436",
+                    "secondary-fixed-dim": "#00dbe9",
+                    "on-surface-variant": "#debdd0",
+                    "on-primary": "#5f004e",
+                    "background": "#131314",
+                    "outline-variant": "#58404f",
+                    "surface-container-highest": "#353436",
+                    "on-tertiary-container": "#34007f",
+                    "tertiary-container": "#a178ff",
+                    "on-error": "#690005",
+                    "surface-container-lowest": "#0e0e0f",
+                    "on-secondary-container": "#00686f",
+                    "secondary-fixed": "#7df4ff",
+                    "surface-tint": "#ffade2",
+                    "surface": "#131314",
+                    "tertiary-fixed-dim": "#d1bcff",
+                    "tertiary": "#d1bcff",
+                    "on-tertiary": "#3c0090",
+                    "on-error-container": "#ffdad6",
+                    "primary": "#ffade2",
+                    "tertiary-fixed": "#e9ddff",
+                    "error": "#ffb4ab"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "margin-desktop": "64px",
+                    "container-max": "1440px",
+                    "gutter": "24px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "headline-xl-mobile": ["Space Grotesk"],
+                    "display-lg-mobile": ["Space Grotesk"],
+                    "display-lg": ["Space Grotesk"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-md": ["Space Grotesk"],
+                    "headline-xl": ["Space Grotesk"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-xl-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display-lg-mobile": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "500"}],
+                    "headline-xl": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container custom-scrollbar overflow-x-hidden">
+<!-- Navigation Shell -->
+<nav class="fixed top-0 w-full bg-white/5 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(255,47,214,0.15)] z-50">
+<div class="flex justify-between items-center px-margin-desktop py-unit-2 max-w-container-max mx-auto">
+<div class="font-display-lg text-headline-md tracking-tighter text-primary">AfterDark</div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">Home</a>
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">About Us</a>
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">Event Solutions</a>
+<a class="text-primary font-bold border-b-2 border-primary-container pb-1 font-label-caps text-label-caps" href="#">Gallery</a>
+<a class="text-on-surface/70 hover:text-primary transition-colors duration-300 font-label-caps text-label-caps" href="#">Contact</a>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-caps text-label-caps font-bold hover:shadow-[0_0_15px_rgba(255,47,214,0.5)] transition-all scale-95 active:scale-90">Tickets</button>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+<main class="relative pt-32 pb-24">
+<!-- Background Ambient Effects -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-1/4 -right-20 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-1/4 -left-20 w-[600px] h-[600px] bg-tertiary-container/10 rounded-full blur-[150px]"></div>
+</div>
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-2xl">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-3 h-3 rounded-full bg-primary-container pulse-indicator"></div>
+<span class="font-label-caps text-label-caps text-primary-container tracking-[0.2em]">LENS INTO DARKNESS</span>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg leading-none mb-6">The <span class="text-primary-container neon-glow-text">Collective</span> Memories</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">A curated odyssey of visual electricity. From strobe-lit dance floors to high-fidelity stages, relive the AfterDark experience through our master photographers' perspectives.</p>
+</div>
+<div class="flex gap-4">
+<button class="glass-card px-6 py-3 rounded-xl font-label-caps text-label-caps flex items-center gap-2 hover:bg-white/10 hover:text-primary-container">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+                        FILTER
+                    </button>
+<button class="glass-card px-6 py-3 rounded-xl font-label-caps text-label-caps flex items-center gap-2 hover:bg-white/10 hover:text-primary-container">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+                        REEL
+                    </button>
+</div>
+</div>
+<!-- Category Chips -->
+<div class="flex flex-wrap gap-3 mb-12">
+<button class="px-6 py-2 rounded-full border border-primary-container text-primary-container font-label-caps text-label-caps bg-primary-container/10 shadow-[0_0_15px_rgba(255,47,214,0.2)]">ALL MOMENTS</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-caps text-label-caps hover:border-primary-container hover:text-primary-container transition-all">FESTIVALS</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-caps text-label-caps hover:border-primary-container hover:text-primary-container transition-all">VIP LOUNGE</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-caps text-label-caps hover:border-primary-container hover:text-primary-container transition-all">ARTIST CLOSE-UPS</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-caps text-label-caps hover:border-primary-container hover:text-primary-container transition-all">CROWD ENERGY</button>
+<button class="px-6 py-2 rounded-full border border-outline-variant text-on-surface-variant font-label-caps text-label-caps hover:border-primary-container hover:text-primary-container transition-all">BEHIND THE SCENES</button>
+</div>
+<!-- Masonry Grid -->
+<div class="masonry-grid">
+<!-- Item 1: Large Vertical -->
+<div class="masonry-item group relative glass-card rounded-xl overflow-hidden cursor-pointer">
+<div class="aspect-[3/4] w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A cinematic, low-angle shot of a world-famous DJ performing on a massive stage surrounded by high-tech LED screens and laser beams. The lighting is dominated by deep blues and vibrant cyan, matching a dark-mode nightlife aesthetic. The DJ is silhouetted against a wall of light, with hands raised in the air, creating a powerful, high-energy atmosphere of a premium electronic music festival." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZT0ce_mzdo4XRnL2q_NjN9X7PWoIE0saxndLbRvJT9mYUpwXyFXaw3E2K_m7y9PgTNrIbeMTk_JBiZbMyq0lHdUxsN2SLK41de2mjrzJ6XyArNEx-0mtq8fSQ2ZjrohcWlNkwC1V0UtsHPnP5pXpo8Mo_W0RGNwQCpdoq3roFPI-Cegqfd38V3wLCGw78BTG3zynNyvLnHqicy0vZQHV4IMYB8iYOS5DhRNX_FqpPEv72IFyBEW3B"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<div class="mb-4">
+<span class="bg-primary-container/20 text-primary-container px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase mb-2 inline-block font-label-caps">Artist</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Prism Stage Live</h3>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-caps text-[10px] tracking-widest">IBIZA SUMMER '24</span>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_0_15px_rgba(255,47,214,0.4)]">
+<span class="material-symbols-outlined">zoom_in</span>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 border-2 border-primary-container/0 group-hover:border-primary-container/50 transition-all duration-300 rounded-xl pointer-events-none"></div>
+</div>
+<!-- Item 2: Landscape -->
+<div class="masonry-item group relative glass-card rounded-xl overflow-hidden cursor-pointer">
+<div class="aspect-video w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A wide-angle, panoramic photograph of a dense crowd of thousands of people in a dark, open-air arena. The scene is illuminated by hundreds of neon pink and purple glow sticks and massive overhead spotlights. The mood is ecstatic and immersive, capturing the collective energy of a peak-time festival performance under a clear night sky. Highly detailed textures of light and shadow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC42zGU3PycFkL3hvMCvFTUSZt0Nw0pGR8Oq8ZB4vLki0Gse87Wvb8zPEKGWsJyQZlyb2vB3FAFp01BTWQ4Ji5mowQS22MjU5cLjJaZ-u88U0zbAF6gd0s2Nb_wENzyT3pxCEyOLSanb6vbhn3f4SDFumKHl9Qo0yhdjbzkXSgrZBKDprn6GiplOTIF8vcQMWpq-3GG7FuQQy4Uwm1hw8ubNl3r5ifIUfkZ7GLUh6ZiQr64pA6Y37xW"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<div class="mb-4">
+<span class="bg-primary-container/20 text-primary-container px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase mb-2 inline-block font-label-caps">Crowd</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Midnight Resonance</h3>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-caps text-[10px] tracking-widest">NEON GARDENS</span>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_0_15px_rgba(255,47,214,0.4)]">
+<span class="material-symbols-outlined">zoom_in</span>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 border-2 border-primary-container/0 group-hover:border-primary-container/50 transition-all duration-300 rounded-xl pointer-events-none"></div>
+</div>
+<!-- Item 3: Square (Video Placeholder) -->
+<div class="masonry-item group relative glass-card rounded-xl overflow-hidden cursor-pointer">
+<div class="aspect-square w-full overflow-hidden relative">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A high-end, close-up photograph of a luxury VIP table in a dimly lit, exclusive nightclub. In the foreground, chilled champagne bottles in ice buckets glow under subtle blue accent lighting. The background shows out-of-focus bokeh of elegant guests and a sleek, modern architectural interior. The aesthetic is sophisticated and expensive, emphasizing premium nightlife service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkyTFkwNpJHk-lv8WefYekd-6WPF9U80eASI8zCtGz-3EPXbCV9pnA4l5c1VPa78-0YwskzO5xyW0dlOTr_X7SA-6emKHQrJlpnn2G_NX9rWkDlR3n9fgbmj4gpUWOhUq61jBXDoJs2x2ZC1J91jubIWeZXxRO8MxYLMnQX4LeRKXRS74paTMvs46jwNUSqG9LieLvwftPJ5l5RdunVOVkrh9Pq8T1CqBzryrO4jF4H_r7Mq0Jfr-E"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-primary-container/80 transition-all group-hover:scale-110 shadow-[0_0_20px_rgba(255,47,214,0.3)]">
+<span class="material-symbols-outlined text-on-surface group-hover:text-white text-3xl">play_arrow</span>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<div class="mb-4">
+<span class="bg-tertiary-container/20 text-on-tertiary-container px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase mb-2 inline-block font-label-caps">Exclusive</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">The Platinum Lounge</h3>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-caps text-[10px] tracking-widest">VIP REEL</span>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_0_15px_rgba(255,47,214,0.4)]">
+<span class="material-symbols-outlined">videocam</span>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 border-2 border-primary-container/0 group-hover:border-primary-container/50 transition-all duration-300 rounded-xl pointer-events-none"></div>
+</div>
+<!-- Item 4: Tall Vertical -->
+<div class="masonry-item group relative glass-card rounded-xl overflow-hidden cursor-pointer">
+<div class="aspect-[9/16] w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="An abstract, atmospheric shot of an avant-garde light installation at an underground club. Long exposure photography captures streaks of cyan and magenta light cutting through a thick haze of smoke. The composition is geometric and futuristic, featuring sharp angles of light that reflect off a polished dark floor, creating a sense of deep, infinite digital space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8kylhw7MiqP90ULyQFDVRt7uhqLAZOOoxZo-4eR4AjlDITruw-Nazz5t8OmaJJVkDcTRTGkKRK90N2SkBUptb_QiHiJVKiP2ljlc0EVoDRWt6CHb0sqsFzEpEqvHZ856eqfe0awnONCzoxTBxyNieFai02ZKagVnm6T5gBFl6cZQtucr9Jzb7X9YBNgPHGKkdBzXkN6V_n9c5IJ-_7QvMSrIU3oap_WqR101sD9NnpjxMs4lka83_"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<div class="mb-4">
+<span class="bg-primary-container/20 text-primary-container px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase mb-2 inline-block font-label-caps">Art</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Holographic Void</h3>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-caps text-[10px] tracking-widest">TECHNO SERIES '24</span>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_0_15px_rgba(255,47,214,0.4)]">
+<span class="material-symbols-outlined">zoom_in</span>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 border-2 border-primary-container/0 group-hover:border-primary-container/50 transition-all duration-300 rounded-xl pointer-events-none"></div>
+</div>
+<!-- Item 5: Small Square -->
+<div class="masonry-item group relative glass-card rounded-xl overflow-hidden cursor-pointer">
+<div class="aspect-square w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A portrait-style photograph of a high-fashion dancer in an intricate, glowing neon costume performing on a dark stage. The costume features thin, neon light strips that trace the dancer's silhouette in bright cyan. Motion blur is captured to emphasize the fluidity of the movement. The background is completely black, making the glowing neon details pop with intense intensity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfVMBkx2ou8X0f-JLBVVWxoXZ-NwSDslF912stVv6zmqT8q5g2nOT4Z3MWeNVnQ6SUonaGhWo-f300r3_e-mKvd6G_IVfueLIz6AJnzQ0mTOoNL3ZWrYxws_VJnN3YeNkwX-ym0VfINtTLRM1AViKyvKrGjeEvfszzm9xOGxCTXvDxfIN3GHGfvUy9RBrmp7tRfTPvaYMp8ffiTcwWaxEFpSbRIwM4EZLk5tuHnZ-8vCqBe-77ZcDg"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<div class="mb-4">
+<h3 class="font-headline-md text-headline-md text-on-surface">Electric Grace</h3>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-caps text-[10px] tracking-widest font-label-caps">DANCE ARCHIVE</span>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_0_15px_rgba(255,47,214,0.4)]">
+<span class="material-symbols-outlined">zoom_in</span>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 border-2 border-primary-container/0 group-hover:border-primary-container/50 transition-all duration-300 rounded-xl pointer-events-none"></div>
+</div>
+<!-- Item 6: Landscape -->
+<div class="masonry-item group relative glass-card rounded-xl overflow-hidden cursor-pointer">
+<div class="aspect-video w-full overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A stunning aerial shot of a large-scale outdoor festival at night, with multiple stages glowing like vibrant digital clusters. Streams of light from the stages illuminate the surrounding forest and landscape in hues of blue, pink, and green. The scale is epic and cinematic, showing the organized chaos and beauty of a major international music event from a god-eye perspective." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCra4sIz8g4sxQUe8UjgHafbeJ8PaNN4mG9oCepB-gD2VhzIwHFUv140OtfXZkAUzHva6oJ7PeLU4BAuZUh-zkjL066B74oK6grltLaeoRS7cK2Z91WJ8IxupbuwPqjMbmsHuZJ2iP0a1II9DNk2fULCqClFiU6FwIn-GjgxaaWtL0hmmEUb-lFkR4svOdJ2ERH7BmNAx90QzoIgQY3YKBNOi9U66XbKAUZDcNlivupoSqnE9gtkGTI"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+<div class="mb-4">
+<span class="bg-primary-container/20 text-primary-container px-3 py-1 rounded text-[10px] font-bold tracking-widest uppercase mb-2 inline-block font-label-caps">Arena</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">The Grid Arena</h3>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-label-caps text-[10px] tracking-widest">GLOBAL TOUR</span>
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shadow-[0_0_15px_rgba(255,47,214,0.4)]">
+<span class="material-symbols-outlined">zoom_in</span>
+</div>
+</div>
+</div>
+<div class="absolute inset-0 border-2 border-primary-container/0 group-hover:border-primary-container/50 transition-all duration-300 rounded-xl pointer-events-none"></div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="mt-24 p-12 glass-card rounded-[2rem] text-center overflow-hidden relative">
+<div class="absolute inset-0 z-0"></div>
+<div class="relative z-10">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-6">Want to be featured?</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto mb-10">Tag your stories with <span class="text-primary-container font-bold neon-glow-text">#AfterDarkExclusive</span> for a chance to be showcased in our official archive and win VIP passes for our next event.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-primary-container text-on-primary-container px-8 py-4 rounded-full font-label-caps text-label-caps font-extrabold hover:shadow-[0_0_25px_rgba(255,47,214,0.6)] transition-all">FOLLOW ON INSTAGRAM</button>
+<button class="glass-card px-8 py-4 rounded-full font-label-caps text-label-caps font-bold hover:bg-white/10 hover:text-primary-container transition-all">SUBMIT CONTENT</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant w-full rounded-t-xl overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-16 max-w-container-max mx-auto">
+<div class="md:col-span-2">
+<div class="font-display-lg text-headline-xl text-primary-container mb-6">AfterDark</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-8">Architecting the future of nightlife. We don't just host events; we create temporal portals into alternative realities.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</a>
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary-container transition-all" href="#">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-primary-container mb-6">NAVIGATION</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary-container transition-all font-body-md" href="#">About Our Vision</a></li>
+<li><a class="text-on-surface-variant hover:text-primary-container transition-all font-body-md" href="#">Current Events</a></li>
+<li><a class="text-on-surface-variant hover:text-primary-container transition-all font-body-md" href="#">Partnership</a></li>
+<li><a class="text-on-surface-variant hover:text-primary-container transition-all font-body-md" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-caps text-label-caps text-primary-container mb-6">LEGAL</h4>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary-container transition-all font-body-md" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-primary-container transition-all font-body-md" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-primary-container transition-all font-body-md" href="#">FAQ</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-outline-variant py-8 px-margin-desktop text-center">
+<p class="font-label-caps text-[10px] text-on-surface-variant/50 tracking-widest">© 2024 AFTERDARK EXCLUSIVE. ALL RIGHTS RESERVED.</p>
+</div>
+</footer>
+<!-- Micro-interaction Scripts -->
+<script>
+        // Smooth reveal for gallery items
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.masonry-item');
+            items.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    item.style.transition = 'all 0.8s cubic-bezier(0.23, 1, 0.32, 1)';
+                    item.style.opacity = '1';
+                    item.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+
+        // Parallax effect on hover for cards
+        document.querySelectorAll('.masonry-item').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.querySelector('img').style.transform = `scale(1.1) translate(${-rotateY}px, ${-rotateX}px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('img').style.transform = 'scale(1) translate(0, 0)';
+            });
+        });
+    </script>
+</body></html>
