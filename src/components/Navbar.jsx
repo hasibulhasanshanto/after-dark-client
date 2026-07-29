@@ -101,7 +101,7 @@ export default function Navbar() {
 
         <div className="hidden lg:block">
           <Link
-            to="/contact"
+            to="/ticket-preview"
             className={`inline-block bg-primary text-on-primary text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,0,214,0.5)] ${
               isScrolled ? "px-6 py-2 text-xs" : "px-7 py-2.5 text-sm"
             }`}
@@ -160,7 +160,7 @@ export default function Navbar() {
             Contact
           </Link>
           <Link
-            to="/contact"
+            to="/ticket-preview"
             className="mt-2 bg-primary text-on-primary px-10 py-3 text-label-caps rounded-full shadow-[0_0_20px_rgba(255,0,214,0.5)]"
             onClick={() => setIsMobileMenuOpen(false)}
           >

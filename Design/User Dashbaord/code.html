@@ -1,0 +1,207 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"tertiary-container":"#a178ff","primary-fixed-dim":"#ffade2","on-tertiary-fixed-variant":"#5700c9","surface-tint":"#ffade2","on-surface-variant":"#debdd0","surface-container-highest":"#353436","secondary-fixed":"#7df4ff","error-container":"#93000a","on-error":"#690005","surface-variant":"#353436","secondary":"#d3fbff","error":"#ffb4ab","secondary-fixed-dim":"#00dbe9","on-secondary-fixed-variant":"#004f54","surface-bright":"#3a393a","primary-container":"#ff2fd6","on-error-container":"#ffdad6","tertiary-fixed-dim":"#d1bcff","on-secondary-container":"#00686f","on-primary-fixed-variant":"#86006f","surface-container-low":"#1c1b1c","outline":"#a68899","on-secondary":"#00363a","on-primary":"#5f004e","on-secondary-fixed":"#002022","on-tertiary-fixed":"#23005b","on-primary-fixed":"#3b002f","inverse-surface":"#e5e2e3","outline-variant":"#58404f","tertiary-fixed":"#e9ddff","surface-container-lowest":"#0e0e0f","background":"#131314","surface-container-high":"#2a2a2b","surface-container":"#201f20","primary-fixed":"#ffd8ee","tertiary":"#d1bcff","surface-dim":"#131314","primary":"#ffade2","on-tertiary-container":"#34007f","on-surface":"#e5e2e3","on-background":"#e5e2e3","on-tertiary":"#3c0090","inverse-primary":"#af0092","secondary-container":"#00eefc","on-primary-container":"#530044","inverse-on-surface":"#313031","surface":"#131314"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"unit":"8px","gutter":"24px","margin-desktop":"64px","container-max":"1280px","margin-mobile":"16px"},"fontFamily":{"label-md":["Geist"],"headline-lg-mobile":["Space Grotesk"],"headline-lg":["Space Grotesk"],"body-md":["Hanken Grotesk"],"label-sm":["Geist"],"headline-md":["Space Grotesk"],"body-lg":["Hanken Grotesk"]},"fontSize":{"label-md":["14px",{"lineHeight":"20px","letterSpacing":"0.05em","fontWeight":"500"}],"headline-lg-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"700"}],"headline-lg":["48px",{"lineHeight":"56px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-sm":["12px",{"lineHeight":"16px","letterSpacing":"0.1em","fontWeight":"600"}],"headline-md":["32px",{"lineHeight":"40px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}]}}}}</script><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"></head><body class="bg-background font-body-md text-on-background"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col border-r border-outline-variant/30"><div class="p-gutter mb-unit flex items-center gap-unit"><div class="w-unit h-unit bg-primary-container blur-[2px] rounded-full"></div><span class="font-headline-md text-headline-md tracking-tighter text-primary-container" style="opacity: 0;">AfterDark</span></div><nav class="flex-1 px-4 py-gutter space-y-2" data-active-classes="bg-primary-container/20 text-primary border-l-4 border-primary shadow-[0_0_15px_rgba(255,47,214,0.3)]"><a aria-current="page" class="flex items-center px-4 py-3 transition-all group font-label-md bg-primary-container/20 text-primary border-l-4 border-primary shadow-[0_0_15px_rgba(255,47,214,0.3)]" data-path="dashboard" href="#"><span class="material-symbols-outlined mr-unit group-hover:text-primary">grid_view</span>Dashboard</a><a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface transition-all group font-label-md" data-path="my-events" href="#"><span class="material-symbols-outlined mr-unit group-hover:text-primary">nightlife</span>My Events</a><a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface transition-all group font-label-md" data-path="bookings" href="#"><span class="material-symbols-outlined mr-unit group-hover:text-primary">confirmation_number</span>Bookings</a><a class="flex items-center px-4 py-3 text-on-surface-variant hover:text-on-surface transition-all group font-label-md" data-path="settings" href="#"><span class="material-symbols-outlined mr-unit group-hover:text-primary">settings</span>Settings</a></nav><div class="mt-auto p-gutter border-t border-outline-variant/20 bg-surface-container-low/40"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-[0_0_10px_rgba(255,173,226,0.5)]"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col overflow-hidden"><span class="font-label-md text-on-surface truncate">Alex Vance</span><span class="text-[10px] uppercase tracking-widest text-primary font-bold">Premium Member</span></div></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-background/60 backdrop-blur-xl z-40 flex items-center justify-between px-gutter border-b border-outline-variant/10"><div class="flex items-center gap-unit text-on-surface-variant"><span class="material-symbols-outlined">search</span><span class="font-label-sm">SEARCH ACCESS PORTAL</span></div><div class="flex items-center gap-gutter"><span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary">notifications</span><div class="h-4 w-[1px] bg-outline-variant"></div><div class="flex items-center gap-unit cursor-pointer hover:opacity-80 transition-opacity"><span class="text-label-sm text-on-surface">CREDITS: 4,200</span><span class="material-symbols-outlined text-primary text-[20px]">token</span></div></div></header><main class="relative pt-20 bg-background min-h-screen"><div class="flex flex-col w-full">
+<!-- Status & Loyalty Bar -->
+<div class="px-margin-desktop py-gutter flex justify-between items-end">
+<div class="flex flex-col">
+<span class="font-label-sm tracking-[0.3em] uppercase mb-unit text-primary-container">Network Status</span>
+<div class="flex items-center gap-4">
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tighter">APEX PREDATOR</h1>
+<div class="h-[2px] w-12 bg-primary-container shadow-[0_0_15px_rgba(255,47,214,1)]"></div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-on-surface-variant tracking-widest uppercase mb-unit">Loyalty Tier</span>
+<div class="flex items-center gap-3 bg-surface-container-high px-4 py-2 border-l-2 border-primary-container">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: &quot;FILL&quot; 1;">diamond</span>
+<span class="font-headline-md text-headline-md text-on-surface leading-none">PHANTOM</span>
+</div>
+</div>
+</div>
+<!-- Hero Section: Next Event -->
+<div class="px-margin-desktop mb-margin-desktop">
+<div class="relative group overflow-hidden bg-surface-container-lowest">
+<div class="absolute inset-0 z-10 bg-gradient-to-t from-background via-background/20 to-transparent"></div>
+<div class="absolute inset-0 z-0 opacity-60 group-hover:scale-105 transition-transform duration-700 bg-cover bg-center" data-alt="A high-energy, cinematic shot of a massive crowd at a luxury Tokyo techno club. Intense electric pink and cyan laser beams cut through a thick atmosphere of fog and strobe lights. People are dressed in futuristic, high-fashion streetwear. The architecture is sharp and brutalist with glowing neon accents. 8k resolution, photorealistic, cinematic lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCKWIo60Aa5_IArqoBFTPVH_AVcpl-ypb4S7I93-eRZPocR0YPLmPK4BBM-VpBQHuoAamMMpMe_a8VWbOcyrNntr0zaMcdDB3nwxyO2jjJk5n23SWZvig29O_tbxBT9Zh1usEgWhGG8HcHWF7T-cVPsc2arhFRb8N4Un6b38e3dJBF3VcUQ4oPaRNCdY80vlV55S_JjXqCIdeQCDYo9EZjAErZjnjackUA5zRV6-nceQ5DxgCyExsfX')"></div>
+<div class="relative z-20 p-12 flex flex-col justify-end min-h-[500px]">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-primary text-on-primary font-label-sm px-3 py-1 uppercase tracking-tighter">Upcoming / Priority One</span>
+<span class="bg-white/10 backdrop-blur-md text-white font-label-sm px-3 py-1 uppercase border border-white/20">Tokyo, JPN</span>
+</div>
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-[64px] leading-none text-on-surface tracking-tighter mb-2">NEON ZENITH: <span class="text-primary">TOKYO</span></h2>
+<div class="flex items-center gap-8 text-on-surface-variant">
+<div class="flex flex-col">
+<span class="font-label-sm uppercase opacity-50">Access Level</span>
+<span class="font-headline-md text-primary">ULTRA-VIP / TIER 1</span>
+</div>
+<div class="w-[1px] h-10 bg-outline-variant/30"></div>
+<div class="flex flex-col">
+<span class="font-label-sm uppercase opacity-50">Date</span>
+<span class="font-headline-md text-on-surface">24.08.2024</span>
+</div>
+</div>
+</div>
+<button class="group relative px-8 py-4 font-label-md flex items-center gap-3 overflow-hidden shadow-[0_0_30px_rgba(255,47,214,0.4)] hover:shadow-[0_0_50px_rgba(255,47,214,0.6)] transition-all bg-primary-container text-on-primary-container">
+<span class="relative z-10">VIEW DIGITAL PASS</span>
+<span class="material-symbols-outlined relative z-10 group-hover:translate-x-1 transition-transform">qr_code_2</span>
+<div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats Section -->
+<div class="px-margin-desktop grid grid-cols-3 gap-gutter mb-margin-desktop">
+<div class="bg-surface-container p-gutter flex flex-col gap-4 group hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-primary tracking-widest uppercase">Total Experiences</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">analytics</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-[56px] text-on-surface" id="stat-total">142</span>
+<span class="text-primary font-label-md">+12%</span>
+</div>
+<div class="w-full bg-outline-variant/20 h-1 mt-auto">
+<div class="bg-primary h-full shadow-[0_0_10px_rgba(255,47,214,1)] w-3/4"></div>
+</div>
+</div>
+<div class="bg-surface-container p-gutter flex flex-col gap-4 group hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-primary tracking-widest uppercase">Upcoming Slots</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">calendar_today</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-[56px] text-on-surface" id="stat-upcoming">08</span>
+<span class="text-on-surface-variant font-label-md">Confirmed</span>
+</div>
+<div class="w-full bg-outline-variant/20 h-1 mt-auto">
+<div class="bg-primary h-full shadow-[0_0_10px_rgba(255,47,214,1)] w-1/4"></div>
+</div>
+</div>
+<div class="bg-surface-container p-gutter flex flex-col gap-4 group hover:bg-surface-container-high transition-colors">
+<div class="flex justify-between items-start">
+<span class="font-label-sm text-primary tracking-widest uppercase">Memories Log</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">history_edu</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-[56px] text-on-surface" id="stat-memories">1,240</span>
+<span class="text-primary font-label-md">GB Collected</span>
+</div>
+<div class="w-full bg-outline-variant/20 h-1 mt-auto">
+<div class="bg-primary h-full shadow-[0_0_10px_rgba(255,47,214,1)] w-full"></div>
+</div>
+</div>
+</div>
+<!-- Bottom Grid: Ledger & Archive -->
+<div class="px-margin-desktop grid grid-cols-12 gap-gutter pb-margin-desktop">
+<!-- Transaction Ledger -->
+<div class="col-span-7 bg-surface-container p-gutter">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline-md text-on-surface">TRANSACTION LEDGER</h3>
+<span class="text-primary font-label-sm cursor-pointer hover:underline">EXPORT CSV</span>
+</div>
+<div class="space-y-4">
+<div class="grid grid-cols-12 py-3 border-b border-outline-variant/10 text-on-surface-variant font-label-sm uppercase tracking-wider">
+<div class="col-span-5">Service / Event</div>
+<div class="col-span-3">Date</div>
+<div class="col-span-2">Type</div>
+<div class="col-span-2 text-right">Credits</div>
+</div>
+<!-- Transaction Item -->
+<div class="grid grid-cols-12 py-4 items-center group cursor-default">
+<div class="col-span-5 font-body-md text-on-surface group-hover:text-primary transition-colors">Cyberdeck Upgrade Tier 2</div>
+<div class="col-span-3 font-label-md text-on-surface-variant">JUL 12, 2024</div>
+<div class="col-span-2"><span class="px-2 py-0.5 bg-surface-container-highest text-[10px] font-bold text-on-surface-variant">ASSET</span></div>
+<div class="col-span-2 text-right font-label-md text-primary">- 1,200</div>
+</div>
+<div class="grid grid-cols-12 py-4 items-center group cursor-default">
+<div class="col-span-5 font-body-md text-on-surface group-hover:text-primary transition-colors">Neon Zenith Early Entry</div>
+<div class="col-span-3 font-label-md text-on-surface-variant">JUL 08, 2024</div>
+<div class="col-span-2"><span class="px-2 py-0.5 bg-surface-container-highest text-[10px] font-bold text-on-surface-variant">TICKET</span></div>
+<div class="col-span-2 text-right font-label-md text-primary">- 4,500</div>
+</div>
+<div class="grid grid-cols-12 py-4 items-center group cursor-default">
+<div class="col-span-5 font-body-md text-on-surface group-hover:text-primary transition-colors">Phantom Tier Re-Up</div>
+<div class="col-span-3 font-label-md text-on-surface-variant">JUN 30, 2024</div>
+<div class="col-span-2"><span class="px-2 py-0.5 bg-surface-container-highest text-[10px] font-bold text-on-surface-variant">SUB</span></div>
+<div class="col-span-2 text-right font-label-md text-primary">- 8,000</div>
+</div>
+</div>
+</div>
+<!-- Memories Archive Grid -->
+<div class="col-span-5 bg-surface-container p-gutter">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline-md text-on-surface">MEMORIES ARCHIVE</h3>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-primary cursor-pointer">grid_view</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors">reorder</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<!-- Memory Card 1 -->
+<div class="relative group aspect-square bg-surface-container-highest overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" data-alt="Glitchy, digital distortion art of a rave. High contrast magenta and black. Cyberpunk aesthetic with digital artifacts and UI elements floating in the frame." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBWyTy_QEyU_DhtbKfINKBqMgaEtwqND1aqCXkXiYFBxJyixnS-Sf880si2lCWRKH6zU7exfNtXevExvcgmXgJQ4oK3v1lMe2_7PRswhgo3wmCy8F_2uXNjQclvvVM6aLhNfpBGjveAIu1nJ7Q6rBtB81vQu1894M4VzO37maBCbAoBhKdGtLtXVfUWyOF3zYyVOtpGfLES4ebmbnygIO621wlE1tv5AOSg5gcYFhkAoBboqZ7vOzSC')"></div>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black to-transparent">
+<span class="font-label-sm text-primary block mb-1">05.24</span>
+<span class="font-body-md text-on-surface font-bold uppercase tracking-tighter">Glitch Protocol</span>
+</div>
+</div>
+<!-- Memory Card 2 -->
+<div class="relative group aspect-square bg-surface-container-highest overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" data-alt="A deep blue and neon pink underwater-themed nightclub scene. Bioluminescent plants hang from the ceiling while dancers move through a hazy atmosphere. Intricate lighting patterns on the walls." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-Sr9_tqCIyYWth1vlC1z63YUg4cn99sQ09d410P4BKmaaazNWLqmE9BAPO-PVUNecdQ9W5y6xF_fkE0rg-KtK-cN7G0KwBKiuEVOrHicsMfc3E-KFnaDv5_mlYhmPZBormB5T9JU1DdPmSY5p2tb5zdPc5YqQ_mI8yfdvNC4T50veQf5zz_j-waaDpyYm-zgKddiOv1SS-m4JCaeupiFYtrhBFsoXxby7yUa72acyJ0JTn_YistBh')"></div>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black to-transparent">
+<span class="font-label-sm text-primary block mb-1">04.12</span>
+<span class="font-body-md text-on-surface font-bold uppercase tracking-tighter">Neon Abyss</span>
+</div>
+</div>
+<!-- Memory Card 3 -->
+<div class="relative group aspect-square bg-surface-container-highest overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500" data-alt="An empty, minimalist industrial space filled with thick white smoke and a single, blinding pink vertical light beam in the center. Abstract and ethereal." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMm2nUo7zQSipUO5WuYwGz6Lws-DYmtZNol1imabWKV5bkHRAy9EPEgFTtQaNyFqQv1hPcqgGYPniP90io1Tklva46dzzLxs5l67fcOyTv4wFkcLzJde-YmtJN4gqwOJQ0KYgW0LvMHdRjt1MijrohaNtoKkMmumzdlYHQh9elkKpGuOOXHR419wbc1ofhuAZLvlsJZdRDcj4K6BEc1zyyVFKTAXHWBBHxgxpSqDwdcTdbsrPdFQ5d')"></div>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black to-transparent">
+<span class="font-label-sm text-primary block mb-1">02.28</span>
+<span class="font-body-md text-on-surface font-bold uppercase tracking-tighter">The Void</span>
+</div>
+</div>
+<!-- Memory Card 4 (Action) -->
+<div class="relative group aspect-square border-2 border-dashed border-outline-variant/30 flex flex-col items-center justify-center hover:border-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary group-hover:scale-125 transition-all text-[40px]">add_circle</span>
+<span class="font-label-sm text-on-surface-variant mt-2 uppercase tracking-widest">Upload Data</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple counter animation for stats
+  document.addEventListener('DOMContentLoaded', () => {
+    const animateValue = (id, start, end, duration) => {
+      const obj = document.getElementById(id);
+      if (!obj) return;
+      let startTimestamp = null;
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const val = Math.floor(progress * (end - start) + start);
+        obj.innerHTML = id === 'stat-memories' ? val.toLocaleString() : val.toString().padStart(2, '0');
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    };
+
+    // Delay start for smooth entry
+    setTimeout(() => {
+      animateValue('stat-total', 0, 142, 1500);
+      animateValue('stat-upcoming', 0, 8, 1000);
+      animateValue('stat-memories', 0, 1240, 2000);
+    }, 500);
+  });
+</script></main></div>
+
+</body></html>

@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router";
 
 export default function Home() {
   useEffect(() => {
@@ -215,9 +216,12 @@ export default function Home() {
                 lineup of techno pioneers in the heart of Tokyo's most iconic
                 district.
               </p>
-              <button className="self-start px-8 py-3.5 bg-primary text-on-primary text-[11px] font-bold rounded-lg hover:shadow-[0_0_25px_rgba(255,0,214,0.6)] transition-all uppercase tracking-[0.1em]">
+              <Link
+                to="/ticket-preview"
+                className="self-start inline-block px-8 py-3.5 bg-primary text-on-primary text-[11px] font-bold rounded-lg hover:shadow-[0_0_25px_rgba(255,0,214,0.6)] transition-all uppercase tracking-[0.1em]"
+              >
                 Secure Tickets
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -302,9 +306,12 @@ export default function Home() {
                 An intimate jungle-themed warehouse transformation. Expect rare
                 house grooves and bespoke botanical cocktail experiences.
               </p>
-              <button className="self-start px-8 py-3.5 bg-primary text-on-primary text-[11px] font-bold rounded-lg hover:shadow-[0_0_25px_rgba(255,0,214,0.6)] transition-all uppercase tracking-[0.1em]">
+              <Link
+                to="/ticket-preview"
+                className="self-start inline-block px-8 py-3.5 bg-primary text-on-primary text-[11px] font-bold rounded-lg hover:shadow-[0_0_25px_rgba(255,0,214,0.6)] transition-all uppercase tracking-[0.1em]"
+              >
                 Secure Tickets
-              </button>
+              </Link>
             </div>
           </div>
         </div>
