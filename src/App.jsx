@@ -10,6 +10,7 @@ import EventSolutions from "./pages/EventSolutions";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import TicketPreview from "./pages/TicketPreview";
+import Dashboard from "./pages/Dashboard";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -36,6 +37,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/ticket-preview" element={<TicketPreview />} />
           <Route path="/ticket" element={<TicketPreview />} />
+          <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
 

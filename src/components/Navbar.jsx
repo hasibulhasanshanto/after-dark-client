@@ -97,9 +97,28 @@ export default function Navbar() {
           >
             Contact
           </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `text-label-caps transition-all duration-300 ${
+                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
+              }`
+            }
+            to="/dashboard"
+          >
+            Dashboard
+          </NavLink>
         </div>
 
-        <div className="hidden lg:block">
+        <div className="hidden lg:flex items-center gap-3">
+          <Link
+            to="/dashboard"
+            className={`inline-flex items-center gap-1.5 border border-white/20 hover:border-primary/50 text-white text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all ${
+              isScrolled ? "px-4 py-1.5 text-xs" : "px-5 py-2 text-xs"
+            }`}
+          >
+            <span className="material-symbols-outlined text-sm text-primary">person</span>
+            Dashboard
+          </Link>
           <Link
             to="/ticket-preview"
             className={`inline-block bg-primary text-on-primary text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,0,214,0.5)] ${
@@ -158,6 +177,14 @@ export default function Navbar() {
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Contact
+          </Link>
+          <Link
+            className="text-label-caps text-primary font-bold flex items-center gap-1.5"
+            to="/dashboard"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <span className="material-symbols-outlined text-lg">grid_view</span>
+            Dashboard
           </Link>
           <Link
             to="/ticket-preview"
