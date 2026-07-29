@@ -97,6 +97,7 @@ export default function Navbar() {
           >
             Contact
           </NavLink>
+          {/* 
           <NavLink
             className={({ isActive }) =>
               `text-label-caps transition-all duration-300 ${
@@ -107,9 +108,11 @@ export default function Navbar() {
           >
             Dashboard
           </NavLink>
+          */}
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
+          {/*
           <Link
             to="/dashboard"
             className={`inline-flex items-center gap-1.5 border border-white/20 hover:border-primary/50 text-white text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all ${
@@ -118,6 +121,16 @@ export default function Navbar() {
           >
             <span className="material-symbols-outlined text-sm text-primary">person</span>
             Dashboard
+          </Link>
+          */}
+          <Link
+            to="/signin"
+            className={`inline-flex items-center gap-1.5 border border-white/20 hover:border-primary/50 text-white text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all ${
+              isScrolled ? "px-4 py-1.5 text-xs" : "px-5 py-2 text-xs"
+            }`}
+          >
+            <span className="material-symbols-outlined text-sm text-primary">login</span>
+            Sign In
           </Link>
           <Link
             to="/ticket-preview"
@@ -178,6 +191,7 @@ export default function Navbar() {
           >
             Contact
           </Link>
+          {/*
           <Link
             className="text-label-caps text-primary font-bold flex items-center gap-1.5"
             to="/dashboard"
@@ -185,6 +199,15 @@ export default function Navbar() {
           >
             <span className="material-symbols-outlined text-lg">grid_view</span>
             Dashboard
+          </Link>
+          */}
+          <Link
+            className="text-label-caps text-primary font-bold flex items-center gap-1.5"
+            to="/signin"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <span className="material-symbols-outlined text-lg">login</span>
+            Sign In
           </Link>
           <Link
             to="/ticket-preview"

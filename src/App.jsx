@@ -11,6 +11,10 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import TicketPreview from "./pages/TicketPreview";
 import Dashboard from "./pages/Dashboard";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -25,11 +29,15 @@ function ScrollToTop() {
 function MainLayout() {
   const location = useLocation();
   const isDashboard = location.pathname.startsWith("/dashboard");
+  const isAuthPage = ["/signin", "/signup", "/forgot-password", "/reset-password"].some((path) =>
+    location.pathname.startsWith(path)
+  );
+  const hideNavFooter = isDashboard || isAuthPage;
 
   return (
     <div className="font-body-md text-on-background bg-background antialiased">
       <ScrollToTop />
-      {!isDashboard && <Navbar />}
+      {!hideNavFooter && <Navbar />}
 
       <main>
         <Routes>
@@ -42,10 +50,14 @@ function MainLayout() {
           <Route path="/ticket" element={<TicketPreview />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
         </Routes>
       </main>
 
-      {!isDashboard && <Footer />}
+      {!hideNavFooter && <Footer />}
     </div>
   );
 }
