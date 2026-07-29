@@ -10,6 +10,34 @@ export default function Dashboard() {
   const [showCreditsModal, setShowCreditsModal] = useState(false);
   const [credits, setCredits] = useState(4200);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const [isNotificationsDropdownOpen, setIsNotificationsDropdownOpen] = useState(false);
+  const [notifications, setNotifications] = useState([
+    {
+      id: 1,
+      title: "Priority Pass Confirmed",
+      description: "Your pass for Neon Zenith Tokyo has been authenticated.",
+      time: "2 hours ago",
+      isUnread: true,
+      type: "ticket",
+    },
+    {
+      id: 2,
+      title: "Tier Level Up",
+      description: "Welcome to PHANTOM Tier! Your premium perks are now active.",
+      time: "1 day ago",
+      isUnread: true,
+      type: "system",
+    },
+    {
+      id: 3,
+      title: "New Album Drop",
+      description: "Exclusive listening session available for Apex members.",
+      time: "3 days ago",
+      isUnread: false,
+      type: "event",
+    },
+  ]);
 
   // Counter animations state
   const [stats, setStats] = useState({ total: 0, upcoming: 0, memories: 0 });
@@ -198,43 +226,232 @@ export default function Dashboard() {
             >
               <span className="material-symbols-outlined text-2xl">menu</span>
             </button>
-
-            {/* Search Input */}
-            <div className="flex items-center gap-2 text-on-surface-variant bg-white/5 border border-white/10 px-3.5 py-2 rounded-xl text-xs sm:text-sm w-48 sm:w-72 focus-within:border-primary/50 transition-colors">
-              <span className="material-symbols-outlined text-lg text-primary">search</span>
-              <input
-                type="text"
-                placeholder="SEARCH ACCESS PORTAL..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-transparent text-white outline-none w-full placeholder:text-on-surface-variant/50 uppercase tracking-wider text-xs font-mono"
-              />
-            </div>
           </div>
 
-          {/* Right Header Actions */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            <button
-              onClick={() => showToast("No new notifications")}
-              className="relative p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
-              aria-label="Notifications"
-            >
-              <span className="material-symbols-outlined text-xl sm:text-2xl">notifications</span>
-              <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-            </button>
+          {/* Right Header Actions - Notifications and User Profile Dropdown */}
+          <div className="flex items-center gap-4 sm:gap-6 relative">
+            
+            {/* Notification Bell with Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => {
+                  setIsNotificationsDropdownOpen(!isNotificationsDropdownOpen);
+                  setIsProfileDropdownOpen(false);
+                }}
+                className="relative p-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer focus:outline-none"
+                aria-label="Notifications"
+              >
+                <span className="material-symbols-outlined text-xl sm:text-2xl">notifications</span>
+                {notifications.filter((n) => n.isUnread).length > 0 && (
+                  <span className="absolute top-1 right-1 bg-primary text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center animate-pulse">
+                    {notifications.filter((n) => n.isUnread).length}
+                  </span>
+                )}
+              </button>
 
-            <div className="h-5 w-[1px] bg-white/10 hidden sm:block"></div>
+              {isNotificationsDropdownOpen && (
+                <>
+                  {/* Backdrop to close the menu when clicking outside */}
+                  <div
+                    className="fixed inset-0 z-40"
+                    onClick={() => setIsNotificationsDropdownOpen(false)}
+                  ></div>
+                  <div className="absolute right-0 mt-3 w-80 sm:w-96 rounded-xl bg-[#131314] border border-white/10 shadow-[0_4px_25px_rgba(0,0,0,0.5)] py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                    
+                    {/* Dropdown Header */}
+                    <div className="px-4 py-2.5 border-b border-white/5 flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <span className="material-symbols-outlined text-sm text-primary">notifications</span>
+                        <span className="text-sm font-bold text-white uppercase tracking-wider">
+                          Notifications
+                        </span>
+                      </div>
+                      {notifications.some((n) => n.isUnread) && (
+                        <button
+                          onClick={() => {
+                            setNotifications(
+                              notifications.map((n) => ({ ...n, isUnread: false }))
+                            );
+                            showToast("All notifications marked as read");
+                          }}
+                          className="text-[10px] text-primary hover:underline font-bold uppercase cursor-pointer"
+                        >
+                          Mark all as read
+                        </button>
+                      )}
+                    </div>
 
-            {/* Credits Button */}
-            <button
-              onClick={() => setShowCreditsModal(true)}
-              className="flex items-center gap-2 bg-white/5 border border-primary/30 hover:border-primary px-3.5 py-1.5 rounded-xl hover:bg-primary/10 transition-all cursor-pointer"
-            >
-              <span className="text-xs font-bold tracking-wider text-white">
-                CREDITS: {credits.toLocaleString()}
-              </span>
-              <span className="material-symbols-outlined text-primary text-lg">token</span>
-            </button>
+                    {/* Notifications List */}
+                    <div className="max-h-72 overflow-y-auto divide-y divide-white/5">
+                      {notifications.length === 0 ? (
+                        <div className="p-6 text-center text-on-surface-variant/60 text-xs">
+                          No notifications found.
+                        </div>
+                      ) : (
+                        notifications.map((n) => (
+                          <div
+                            key={n.id}
+                            className={`p-3.5 transition-colors flex gap-3 items-start group ${
+                              n.isUnread ? "bg-white/[0.02]" : "opacity-75 hover:bg-white/[0.01]"
+                            }`}
+                          >
+                            {/* Type Icon */}
+                            <div className="mt-0.5">
+                              {n.type === "ticket" && (
+                                <span className="material-symbols-outlined text-primary text-lg">
+                                  confirmation_number
+                                </span>
+                              )}
+                              {n.type === "system" && (
+                                <span className="material-symbols-outlined text-cyan-400 text-lg">
+                                  diamond
+                                </span>
+                              )}
+                              {n.type === "event" && (
+                                <span className="material-symbols-outlined text-purple-400 text-lg">
+                                  campaign
+                                </span>
+                              )}
+                            </div>
+
+                            {/* Details */}
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center justify-between gap-2">
+                                <p className={`text-xs font-bold text-white ${n.isUnread ? "font-bold" : "font-semibold"}`}>
+                                  {n.title}
+                                </p>
+                                <span className="text-[9px] text-on-surface-variant/60 font-medium whitespace-nowrap">
+                                  {n.time}
+                                </span>
+                              </div>
+                              <p className="text-xs text-on-surface-variant mt-0.5 leading-normal">
+                                {n.description}
+                              </p>
+                              
+                              {/* Inline Actions */}
+                              {n.isUnread && (
+                                <button
+                                  onClick={() => {
+                                    setNotifications(
+                                      notifications.map((item) =>
+                                        item.id === n.id ? { ...item, isUnread: false } : item
+                                      )
+                                    );
+                                    showToast("Notification marked as read");
+                                  }}
+                                  className="mt-2 text-[10px] text-primary font-bold uppercase hover:underline cursor-pointer flex items-center gap-1"
+                                >
+                                  <span className="material-symbols-outlined text-xs">done</span>
+                                  Mark as read
+                                </button>
+                              )}
+                            </div>
+
+                            {/* Dismiss button */}
+                            <button
+                              onClick={() => {
+                                setNotifications(notifications.filter((item) => item.id !== n.id));
+                                showToast("Notification dismissed");
+                              }}
+                              className="text-on-surface-variant hover:text-white opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer p-0.5"
+                              title="Dismiss"
+                            >
+                              <span className="material-symbols-outlined text-xs">close</span>
+                            </button>
+                          </div>
+                        ))
+                      )}
+                    </div>
+
+                    {/* Footer */}
+                    {notifications.length > 0 && (
+                      <div className="px-4 py-2 border-t border-white/5 flex justify-end">
+                        <button
+                          onClick={() => {
+                            setNotifications([]);
+                            showToast("All notifications cleared");
+                          }}
+                          className="text-[10px] text-rose-400 hover:text-rose-300 font-bold uppercase cursor-pointer"
+                        >
+                          Clear all
+                        </button>
+                      </div>
+                    )}
+
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* User Profile Area */}
+            <div className="relative">
+              <button
+                onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
+                className="flex items-center gap-2 hover:opacity-80 transition-opacity focus:outline-none cursor-pointer"
+              >
+                <div className="w-8 h-8 sm:w-10 h-10 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center text-primary shadow-[0_0_10px_rgba(255,0,214,0.3)]">
+                  <span className="material-symbols-outlined text-lg sm:text-xl">person</span>
+                </div>
+                <span className="text-sm font-semibold text-white hidden sm:inline select-none">
+                  Alex Vance
+                </span>
+                <span className="material-symbols-outlined text-on-surface-variant text-sm transition-transform select-none">
+                  {isProfileDropdownOpen ? "expand_less" : "expand_more"}
+                </span>
+              </button>
+
+              {/* Profile Dropdown Menu */}
+              {isProfileDropdownOpen && (
+                <>
+                  <div
+                    className="fixed inset-0 z-40"
+                    onClick={() => setIsProfileDropdownOpen(false)}
+                  ></div>
+                  <div className="absolute right-0 mt-3 w-56 rounded-xl bg-[#131314] border border-white/10 shadow-[0_4px_25px_rgba(0,0,0,0.5)] py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+                    <div className="px-4 py-2 border-b border-white/5">
+                      <p className="text-[10px] text-on-surface-variant uppercase tracking-wider font-bold">
+                        Authenticated as
+                      </p>
+                      <p className="text-sm font-bold text-white truncate">Alex Vance</p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        setActiveTab("settings");
+                        setIsProfileDropdownOpen(false);
+                      }}
+                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-on-surface-variant hover:text-white hover:bg-white/5 transition-all text-left cursor-pointer font-medium"
+                    >
+                      <span className="material-symbols-outlined text-lg text-primary">person</span>
+                      Profile Info
+                    </button>
+                    <button
+                      onClick={() => {
+                        setActiveTab("settings");
+                        setIsProfileDropdownOpen(false);
+                      }}
+                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-on-surface-variant hover:text-white hover:bg-white/5 transition-all text-left cursor-pointer font-medium"
+                    >
+                      <span className="material-symbols-outlined text-lg text-primary">settings</span>
+                      Account Settings
+                    </button>
+                    <div className="h-[1px] bg-white/5 my-1"></div>
+                    <button
+                      onClick={() => {
+                        setIsProfileDropdownOpen(false);
+                        showToast("Logging out...");
+                        setTimeout(() => {
+                          navigate("/");
+                        }, 1000);
+                      }}
+                      className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-rose-400 hover:text-rose-300 hover:bg-rose-950/20 transition-all text-left cursor-pointer font-medium"
+                    >
+                      <span className="material-symbols-outlined text-lg">logout</span>
+                      Logout
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </header>
 

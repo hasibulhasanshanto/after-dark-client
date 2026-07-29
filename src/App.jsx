@@ -22,11 +22,14 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
+function MainLayout() {
+  const location = useLocation();
+  const isDashboard = location.pathname.startsWith("/dashboard");
+
   return (
     <div className="font-body-md text-on-background bg-background antialiased">
       <ScrollToTop />
-      <Navbar />
+      {!isDashboard && <Navbar />}
 
       <main>
         <Routes>
@@ -42,9 +45,13 @@ function App() {
         </Routes>
       </main>
 
-      <Footer />
+      {!isDashboard && <Footer />}
     </div>
   );
+}
+
+function App() {
+  return <MainLayout />;
 }
 
 export default App;
