@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import Logo from "../assets/after-dark-logo.jpeg"
+import Logo from "../assets/after-dark-circle-logo.svg"
 
 export default function Footer() {
   return (

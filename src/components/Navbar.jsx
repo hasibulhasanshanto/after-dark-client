@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router";
+import MainLogo from "../assets/after-dark.svg"
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -30,16 +31,17 @@ export default function Navbar() {
         }`}
     >
       <div
-        className={`flex justify-between items-center px-5 md:px-16 transition-all duration-500 max-w-[1440px] mx-auto ${isScrolled ? "py-2.5" : "py-5 md:py-6"
+        className={`flex justify-between items-center px-5 md:px-16 transition-all duration-500 max-w-container-max mx-auto ${isScrolled ? "py-2.5" : "py-5 md:py-6"
           }`}
       >
-        <Link
+        {/* <Link
           className={`font-headline-md tracking-tighter text-primary neon-glow transition-all duration-500 ${isScrolled ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
             }`}
           to="/"
         >
           AfterDark
-        </Link>
+        </Link> */}
+        <img src={MainLogo} alt="after-dark-logo" className="w-60" />
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center gap-8">
