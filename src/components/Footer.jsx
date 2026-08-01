@@ -1,13 +1,15 @@
 import { Link } from "react-router";
+import Logo from "../assets/after-dark-logo.jpeg"
 
 export default function Footer() {
   return (
     <footer className="bg-surface-container-lowest border-t border-outline-variant">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 px-5 md:px-16 py-16 md:py-20 max-w-[1440px] mx-auto">
         <div>
-          <Link to="/" className="text-3xl md:text-[40px] font-display-lg text-primary block mb-4 tracking-tighter neon-glow">
+          {/* <Link to="/" className="text-3xl md:text-[40px] font-display-lg text-primary block mb-4 tracking-tighter neon-glow">
             AfterDark
-          </Link>
+          </Link> */}
+          <img src={Logo} alt="after-dark-logo" className="w-45 mb-4 rounded-full" />
           <p className="text-on-surface-variant text-sm max-w-xs leading-relaxed">
             Elevating Asian nightlife through unrivaled production and
             exclusive experiences since 2018.

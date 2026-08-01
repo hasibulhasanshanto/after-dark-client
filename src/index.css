@@ -1,6 +1,24 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap");
+@import url("https://fonts.cdnfonts.com/css/ethnocentric");
+@import url("https://fonts.cdnfonts.com/css/billion-dreams");
 
 @import "tailwindcss";
+
+@font-face {
+  font-family: 'Ethnocentric';
+  src: local('Ethnocentric Rg'), local('Ethnocentric'), url('https://fonts.cdnfonts.com/s/6220/ethnocentric rg.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Billion Dreams';
+  src: local('Billion Dreams'), url('https://fonts.cdnfonts.com/s/40599/BillionDreams_PERSONAL.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @theme {
   --color-primary: #ff00d6;
@@ -36,12 +54,17 @@
   --spacing-margin-desktop: 64px;
   --spacing-container-max: 1440px;
 
-  --font-display-lg: "Space Grotesk", sans-serif;
-  --font-headline-md: "Space Grotesk", sans-serif;
-  --font-headline-xl: "Space Grotesk", sans-serif;
-  --font-body-lg: "Inter", sans-serif;
-  --font-body-md: "Inter", sans-serif;
-  --font-label-caps: "Inter", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-ethnocentric: "Ethnocentric", "Ethnocentric Rg", sans-serif;
+  --font-billion: "Billion Dreams", cursive;
+  --font-title: "Ethnocentric", "Ethnocentric Rg", sans-serif;
+
+  --font-display-lg: "Ethnocentric", "Ethnocentric Rg", sans-serif;
+  --font-headline-md: "Ethnocentric", "Ethnocentric Rg", sans-serif;
+  --font-headline-xl: "Ethnocentric", "Ethnocentric Rg", sans-serif;
+  --font-body-lg: "Poppins", sans-serif;
+  --font-body-md: "Poppins", sans-serif;
+  --font-label-caps: "Poppins", sans-serif;
 
   --text-display-lg: 72px;
   --text-display-lg--line-height: 1.05;
@@ -71,7 +94,21 @@
   --text-label-caps--font-weight: 600;
 }
 
+@layer base {
+  body {
+    font-family: "Poppins", sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-title, .title {
+    font-family: "Ethnocentric", "Ethnocentric Rg", sans-serif;
+  }
+}
+
 @layer utilities {
+  .font-billion {
+    font-family: "Billion Dreams", cursive, sans-serif !important;
+  }
+
   .neon-glow {
     text-shadow:
       0 0 15px rgba(255, 0, 214, 0.6),

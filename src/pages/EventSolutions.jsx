@@ -68,7 +68,7 @@ export default function EventSolutions() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_12px_#FF00D6]"></span>
-              <span className="font-label-caps text-label-caps tracking-widest text-secondary uppercase">
+              <span className="font-billion text-base tracking-normal text-secondary">
                 Elite Experiences
               </span>
             </div>

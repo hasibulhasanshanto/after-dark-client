@@ -87,7 +87,7 @@ export default function Gallery() {
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_12px_#FF00D6]"></span>
-              <span className="font-label-caps text-xs text-primary tracking-[0.2em] uppercase">
+              <span className="font-billion text-base text-primary tracking-normal">
                 Lens Into Darkness
               </span>
             </div>

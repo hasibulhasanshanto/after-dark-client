@@ -10,7 +10,7 @@ export default function About() {
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden px-5 md:px-16 max-w-[1440px] mx-auto text-center">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,0,214,0.1),transparent_70%)] pointer-events-none"></div>
         <div className="relative z-10 max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs uppercase tracking-widest mb-6 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-base font-billion tracking-normal mb-6 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
             The Architecture of Nightlife
           </div>
