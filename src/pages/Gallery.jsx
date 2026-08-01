@@ -87,7 +87,7 @@ export default function Gallery() {
           <div className="max-w-2xl">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_12px_#FF00D6]"></span>
-              <span className="font-billion text-base text-primary tracking-normal">
+              <span className="font-great-vibes text-base sm:text-lg text-primary tracking-wide">
                 Lens Into Darkness
               </span>
             </div>
@@ -112,11 +112,10 @@ export default function Gallery() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2.5 rounded-full font-label-caps text-xs uppercase tracking-wider transition-all ${
-                activeCategory === cat
-                  ? "bg-primary text-on-primary font-bold shadow-[0_0_20px_rgba(255,0,214,0.4)]"
-                  : "border border-white/15 text-gray-300 hover:border-primary/50 hover:text-white bg-white/[0.02]"
-              }`}
+              className={`px-6 py-2.5 rounded-full font-label-caps text-xs uppercase tracking-wider transition-all ${activeCategory === cat
+                ? "bg-primary text-on-primary font-bold shadow-[0_0_20px_rgba(255,0,214,0.4)]"
+                : "border border-white/15 text-gray-300 hover:border-primary/50 hover:text-white bg-white/[0.02]"
+                }`}
             >
               {cat}
             </button>

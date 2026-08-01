@@ -47,7 +47,7 @@ export default function EventSolutions() {
             ref={(el) => {
               if (el) {
                 el.muted = true;
-                el.play().catch(() => {});
+                el.play().catch(() => { });
               }
             }}
             className="w-full h-full object-cover opacity-85 scale-100"
@@ -68,7 +68,7 @@ export default function EventSolutions() {
           <div className="max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_12px_#FF00D6]"></span>
-              <span className="font-billion text-base tracking-normal text-secondary">
+              <span className="font-great-vibes text-base sm:text-lg tracking-wide text-secondary">
                 Elite Experiences
               </span>
             </div>
@@ -143,7 +143,7 @@ export default function EventSolutions() {
               </div>
             </div>
           </div>
-          
+
           {/* Corporate Events */}
           <div className="lg:col-span-4 group cursor-pointer">
             <div className="glass neon-border-hover rounded-xl p-8 h-full transition-all duration-500 min-h-[400px]">

@@ -37,7 +37,7 @@ export default function Contact() {
         </div>
 
         <div className="relative z-10 max-w-3xl pt-12">
-          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-base font-billion tracking-normal mb-6 backdrop-blur-md">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-base sm:text-lg font-great-vibes tracking-wide mb-6 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_#FF00D6]"></span>
             Concierge Portal
           </div>
@@ -129,11 +129,10 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full py-5 rounded-2xl font-label-caps text-xs font-bold uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3 shadow-lg ${
-                      submitted
-                        ? "bg-emerald-500 text-white"
-                        : "bg-primary text-on-primary hover:shadow-[0_0_30px_rgba(255,0,214,0.5)] hover:scale-[1.01] active:scale-[0.99]"
-                    }`}
+                    className={`w-full py-5 rounded-2xl font-label-caps text-xs font-bold uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-3 shadow-lg ${submitted
+                      ? "bg-emerald-500 text-white"
+                      : "bg-primary text-on-primary hover:shadow-[0_0_30px_rgba(255,0,214,0.5)] hover:scale-[1.01] active:scale-[0.99]"
+                      }`}
                   >
                     {isSubmitting ? (
                       <>

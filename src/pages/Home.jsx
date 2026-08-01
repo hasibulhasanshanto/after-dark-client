@@ -55,7 +55,7 @@ export default function Home() {
             ref={(el) => {
               if (el) {
                 el.muted = true;
-                el.play().catch(() => {});
+                el.play().catch(() => { });
               }
             }}
             className="w-full h-full object-cover opacity-85 scale-100"
@@ -78,8 +78,12 @@ export default function Home() {
         {/* Hero Content Container */}
         <div className="relative z-10 w-full max-w-[1440px] mx-auto px-5 md:px-16 pt-24 pb-16">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-primary text-on-primary px-5 py-1.5 rounded-full text-base font-billion tracking-normal mb-6 shadow-[0_0_20px_rgba(255,0,214,0.6)]">
+            {/* <div className="inline-flex items-center gap-2 bg-primary text-on-primary px-4 py-1.5 rounded-full text-base sm:text-lg font-great-vibes tracking-wide mb-6 shadow-[0_0_20px_rgba(255,0,214,0.6)]">
               <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+              Asia's Premier Nightlife &amp; Event Partner
+            </div> */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-base sm:text-lg font-great-vibes tracking-wide mb-6 backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
               Asia's Premier Nightlife &amp; Event Partner
             </div>
 

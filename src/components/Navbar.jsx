@@ -24,21 +24,18 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-background/90 backdrop-blur-xl border-b border-white/10 shadow-2xl"
-          : "bg-black/80 lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none border-b border-white/5 lg:border-b-0"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled
+        ? "bg-background/90 backdrop-blur-xl border-b border-white/10 shadow-2xl"
+        : "bg-black/80 lg:bg-transparent backdrop-blur-xl lg:backdrop-blur-none border-b border-white/5 lg:border-b-0"
+        }`}
     >
       <div
-        className={`flex justify-between items-center px-5 md:px-16 transition-all duration-500 max-w-[1440px] mx-auto ${
-          isScrolled ? "py-2.5" : "py-5 md:py-6"
-        }`}
+        className={`flex justify-between items-center px-5 md:px-16 transition-all duration-500 max-w-[1440px] mx-auto ${isScrolled ? "py-2.5" : "py-5 md:py-6"
+          }`}
       >
         <Link
-          className={`font-headline-md tracking-tighter text-primary neon-glow transition-all duration-500 ${
-            isScrolled ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
-          }`}
+          className={`font-headline-md tracking-tighter text-primary neon-glow transition-all duration-500 ${isScrolled ? "text-2xl md:text-3xl" : "text-3xl md:text-4xl"
+            }`}
           to="/"
         >
           AfterDark
@@ -48,8 +45,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-8">
           <NavLink
             className={({ isActive }) =>
-              `text-label-caps transition-all duration-300 ${
-                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
+              `text-label-caps transition-all duration-300 uppercase ${isActive ? "text-primary font-semibold" : "text-on-surface/70 hover:text-primary"
               }`
             }
             to="/"
@@ -57,20 +53,10 @@ export default function Navbar() {
           >
             Home
           </NavLink>
+
           <NavLink
             className={({ isActive }) =>
-              `text-label-caps transition-all duration-300 ${
-                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
-              }`
-            }
-            to="/about"
-          >
-            About Us
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              `text-label-caps transition-all duration-300 ${
-                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
+              `text-label-caps transition-all duration-300 uppercase ${isActive ? "text-primary font-semibold" : "text-on-surface/70 hover:text-primary"
               }`
             }
             to="/solutions"
@@ -79,8 +65,7 @@ export default function Navbar() {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              `text-label-caps transition-all duration-300 ${
-                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
+              `text-label-caps transition-all duration-300 uppercase ${isActive ? "text-primary font-semibold" : "text-on-surface/70 hover:text-primary"
               }`
             }
             to="/gallery"
@@ -89,8 +74,16 @@ export default function Navbar() {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              `text-label-caps transition-all duration-300 ${
-                isActive ? "text-primary border-b-2 border-primary pb-1 font-bold" : "text-on-surface/70 hover:text-primary"
+              `text-label-caps transition-all duration-300 uppercase ${isActive ? "text-primary font-semibold" : "text-on-surface/70 hover:text-primary"
+              }`
+            }
+            to="/about"
+          >
+            About Us
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `text-label-caps transition-all duration-300 uppercase ${isActive ? "text-primary font-semibold" : "text-on-surface/70 hover:text-primary"
               }`
             }
             to="/contact"
@@ -125,18 +118,16 @@ export default function Navbar() {
           */}
           <Link
             to="/signin"
-            className={`inline-flex items-center gap-1.5 border border-white/20 hover:border-primary/50 text-white text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all ${
-              isScrolled ? "px-4 py-1.5 text-xs" : "px-5 py-2 text-xs"
-            }`}
+            className={`inline-flex items-center gap-1.5 border border-white/20 hover:border-primary/50 text-white text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all ${isScrolled ? "px-4 py-1.5 text-xs" : "px-5 py-2 text-xs"
+              }`}
           >
             <span className="material-symbols-outlined text-sm text-primary">login</span>
             Sign In
           </Link>
           <Link
             to="/ticket-preview"
-            className={`inline-block bg-primary text-on-primary text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,0,214,0.5)] ${
-              isScrolled ? "px-6 py-2 text-xs" : "px-7 py-2.5 text-sm"
-            }`}
+            className={`inline-block bg-primary text-on-primary text-label-caps rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,0,214,0.5)] ${isScrolled ? "px-6 py-2 text-xs" : "px-7 py-2.5 text-sm"
+              }`}
           >
             Tickets
           </Link>
